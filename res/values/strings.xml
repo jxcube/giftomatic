@@ -16,5 +16,6 @@
     <string name="email_address">E-mail Address</string>
     <string name="sign_up_form">Sign Up Form</string>
     <string name="title_activity_login_page">LoginPage</string>
+    <string name="password">Password</string>
 
 </resources>
