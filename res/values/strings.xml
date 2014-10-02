@@ -10,5 +10,11 @@
     <string name="or">OR</string>
     <string name="log_in">Log in</string>
     <string name="app_logo">App logo</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="username">Username</string>
+    <string name="email_address">E-mail Address</string>
+    <string name="sign_up_form">Sign Up Form</string>
+    
 
 </resources>
