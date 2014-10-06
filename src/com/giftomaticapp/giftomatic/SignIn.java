@@ -19,7 +19,7 @@ public class SignIn extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_in);
         
         // Get the reference to the (sign up with) email
         // button and define the behavior when the user clicks it
@@ -34,7 +34,7 @@ public class SignIn extends Activity {
         
         // Get the reference to the Login button
         // and define the behavior when the user clicks it
-        loginBtn = (Button) findViewById(R.id.login_btn);
+        loginBtn = (Button) findViewById(R.id.to_login_btn);
         loginBtn.setOnClickListener(new OnClickListener() {
         	@Override
         	public void onClick(View v) {
