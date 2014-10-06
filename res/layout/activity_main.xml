@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="140dp" >
+        android:layout_marginTop="70dp" >
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -175,15 +175,6 @@
             android:text="RANDOM GIFT" />
     </RelativeLayout>
 
-    <SearchView
-        android:id="@+id/searchView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/view_flipper"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="80dp" >
-    </SearchView>
-
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
@@ -198,14 +189,13 @@
         <requestFocus />
     </EditText>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
+    <SearchView
+        android:id="@+id/searchView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/view_flipper"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="#262626"
-        android:orientation="vertical" >
-
-    </LinearLayout>
+        android:layout_marginTop="20dp" >
+    </SearchView>
 
 </RelativeLayout>
