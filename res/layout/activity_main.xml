@@ -1,101 +1,211 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffc50e0e"
-    android:clickable="false" >
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/SignInLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical" >
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="140dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:layout_marginLeft="25dp"
-            android:text="@string/sign_in_label"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:typeface="sans" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-        <ImageButton
-            android:id="@+id/fb_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="6dp"
-            android:background="@drawable/fb_button"
-            android:contentDescription="@string/facebook" />
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/shoes" />
 
-        <ImageButton
-            android:id="@+id/gplus_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="6dp"
-            android:background="@drawable/google_button"
-            android:contentDescription="@string/gplus" />
+            <TextView
+                style="@style/ImageTitle"
+                android:layout_height="40dp"
+                android:text="Hot Trends" />
+        </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/email_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="6dp"
-            android:background="@drawable/email_button"
-            android:contentDescription="@string/email" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-        <TextView
-            android:id="@+id/orText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/or"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="22sp"
-            android:typeface="sans" />
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/wallets" />
 
-        <Button
-            android:id="@+id/login_btn"
-            android:layout_width="97dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="3dp"
-            android:text="@string/log_in" 
-            android:typeface="sans" />
-    </LinearLayout>
+            <TextView
+                style="@style/ImageTitle"
+                android:layout_height="40dp"
+                android:text="Nike Wallets" />
+        </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/logoLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/SignInLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical" >
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bags" />
+
+            <TextView
+                style="@style/ImageTitle"
+                android:layout_height="40dp"
+                android:text="Jansport Bags" />
+        </RelativeLayout>
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:id="@+id/ViewFlipper01"
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:layout_alignLeft="@+id/view_flipper"
+        android:layout_below="@+id/view_flipper"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="39dp" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/valentines" />
+
+            <TextView
+                style="@style/ImageTitle"
+                android:layout_height="40dp"
+                android:text="Valentines Gift Ideas" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/chocolates" />
+
+            <TextView
+                style="@style/ImageTitle"
+                android:layout_height="40dp"
+                android:text="Chocolates" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/teddy" />
+
+            <TextView
+                style="@style/ImageTitle"
+                android:layout_height="40dp"
+                android:text="Teddy Bears" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roses" />
+
+            <TextView
+                style="@style/ImageTitle"
+                android:layout_height="40dp"
+                android:text="Roses" />
+        </RelativeLayout>
+    </ViewFlipper>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ViewFlipper01"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="28dp" >
 
         <ImageView
-            android:id="@+id/logoImg"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:background="@drawable/logo"
-            android:contentDescription="@string/app_logo" />
-    </LinearLayout>
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/random" />
+
+        <TextView
+            style="@style/ImageTitle"
+            android:layout_height="40dp"
+            android:text="RANDOM GIFT" />
+    </RelativeLayout>
+
+    <SearchView
+        android:id="@+id/searchView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/view_flipper"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp" >
+    </SearchView>
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/view_flipper"
+        android:layout_alignTop="@+id/searchView1"
+        android:layout_toRightOf="@+id/searchView1"
+        android:ems="10"
+        android:hint="Search here"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="25dp"
-        android:layout_height="fill_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="20dp"
-        android:background="#ff000000"
-        android:orientation="vertical" />
+        android:layout_centerHorizontal="true"
+        android:background="#262626"
+        android:orientation="vertical" >
+
+    </LinearLayout>
 
 </RelativeLayout>
