@@ -8,5 +8,6 @@
     <string name="title_activity_login_page">Log In</string>
     <string name="title_activity_main">Main</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_gift_gallery">GiftGallery</string>
 
 </resources>
