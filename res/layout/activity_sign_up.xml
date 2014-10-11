@@ -93,29 +93,33 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal" >
+        
+            
+            <RadioGroup 
+                android:id="@+id/sex"
+                android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="5dp"
+	            android:orientation="horizontal">
+	            <RadioButton
+	                android:id="@+id/male_btn"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="30dp"
+	                android:text="M"
+	                android:textStyle="bold" />
+	
+	            <RadioButton
+	                android:id="@+id/female_btn"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="20dp"
+	                android:text="F"
+	                android:textStyle="bold" />
+            </RadioGroup>
 
-            <RadioButton
-                android:id="@+id/male_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="M"
-                android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/female_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="F"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        
     </LinearLayout>
 
     <ImageView
@@ -138,7 +142,7 @@
         android:layout_alignTop="@+id/imageView"
         android:layout_marginLeft="31dp"
         android:layout_marginTop="27dp"
-        android:text="Sign Up Form"
+        android:text="Sign Up"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
 

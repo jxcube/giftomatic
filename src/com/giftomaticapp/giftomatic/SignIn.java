@@ -1,7 +1,9 @@
 package com.giftomaticapp.giftomatic;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +21,14 @@ public class SignIn extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+        boolean authenticated = sp.getBoolean("authenticated", false);
+        if (authenticated) {
+        	startActivity(new Intent(this, MainActivity.class));
+        	return;
+        }
+        
         setContentView(R.layout.activity_sign_in);
         
         // Get the reference to the (sign up with) email
