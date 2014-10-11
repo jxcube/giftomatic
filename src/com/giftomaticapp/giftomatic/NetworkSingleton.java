@@ -9,6 +9,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+/*
+ * This class uses Singleton pattern
+ * to easily access the RequestQueue object
+ * of the app without having to re-instantiate
+ * it each time we need them.
+ */
 public class NetworkSingleton {
 	private static NetworkSingleton instance;
 	private RequestQueue requestQueue;
@@ -43,6 +49,9 @@ public class NetworkSingleton {
 		return requestQueue;
 	}
 	
+	/*
+	 * Use this method to access this class' instance
+	 */
 	public static synchronized NetworkSingleton getInstance(Context ctx) {
 		if (instance == null) {
 			instance = new NetworkSingleton(ctx);
@@ -50,6 +59,9 @@ public class NetworkSingleton {
 		return instance;
 	}
 	
+	/*
+	 * Use this method to add new request to the request queue
+	 */
 	public <T> void addToRequestQueue(Request<T> req) {
 		getRequestQueue().add(req);
 	}
