@@ -1,7 +1,7 @@
 Gift-O-Matic Android Client
 ===========================
 
-Gift-O-Matic (GOM) is a gift-suggestion engine in the cloud. GOM uses client-server architecture to perform its duty. This repo contains all the Android source codes for GOM's client application. This project uses Eclipse ADT as the IDE.
+Gift-O-Matic (GOM) is a gift-suggestion engine in the cloud. GOM uses client-server architecture to deliver its service. This repo contains all the Android source codes for GOM's client application. This project uses Eclipse ADT as the IDE.
 
 READ THIS
 ---------
