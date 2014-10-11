@@ -1,9 +1,13 @@
 package com.giftomaticapp.giftomatic;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +15,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 public class SignUp extends Activity {
 	private static final String TAG = "SignUp";
@@ -60,7 +69,38 @@ public class SignUp extends Activity {
 	}
 	
 	public void submit(String username, String email, String password, String gender) {
-		
+		String url = "http://api.giftomaticapp.com/user";
+		JSONObject data = new JSONObject();
+		try {
+			data.put("username", username);
+			data.put("email", email);
+			data.put("password", password);
+			data.put("gender", gender);
+		} catch (JSONException e) {
+			Log.e(TAG, e.getMessage(), e);
+		}
+		JsonObjectRequest request = new JsonObjectRequest
+				(Request.Method.POST, url, data, new Response.Listener<JSONObject>() {
+					@Override
+					public void onResponse(JSONObject response) {
+						try {
+							if (response.getString("message") != null && response.getString("message").equals("error")) {
+								alert("We're Sorry", "Our server is currently experiencing some issues, please try again later");
+								return;
+							}
+							
+							alert("Success", "Your account has been successfully created! You can now log in");
+						} catch (JSONException e) {
+							Log.e(TAG, e.getMessage(), e);
+						}
+					}
+				}, new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError err) {
+						alert("Connection Problem", "Are you connected to the internet?");
+					}
+				});
+		NetworkSingleton.getInstance(this).addToRequestQueue(request);
 	}
 	
 	private class LoginListener implements OnClickListener {
