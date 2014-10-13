@@ -5,6 +5,12 @@
         <!-- Customize your theme here. -->
     </style>
     
+    <style name="ImageDescription">
+        <item name="android:textColor">#131313</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:typeface">sans</item>        
+    </style>
+    
     <style name="ImageTitle">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">50dp</item>
