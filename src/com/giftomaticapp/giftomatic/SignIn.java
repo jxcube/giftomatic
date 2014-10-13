@@ -11,12 +11,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import butterknife.OnClick;
 
 
 public class SignIn extends Activity {
-	
-	private ImageButton emailBtn;
-	private Button loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,30 +28,19 @@ public class SignIn extends Activity {
         }
         
         setContentView(R.layout.activity_sign_in);
-        
-        // Get the reference to the (sign up with) email
-        // button and define the behavior when the user clicks it
-        emailBtn = (ImageButton) findViewById(R.id.email_btn);
-        emailBtn.setOnClickListener(new OnClickListener() {
-        	@Override
-        	public void onClick(View v) {
-        		// When it is clicked, give user the registration form
-        		startActivity(new Intent(SignIn.this, SignUp.class));
-        	}
-        });
-        
-        // Get the reference to the Login button
-        // and define the behavior when the user clicks it
-        loginBtn = (Button) findViewById(R.id.to_login_btn);
-        loginBtn.setOnClickListener(new OnClickListener() {
-        	@Override
-        	public void onClick(View v) {
-        		// When it is clicked, go to the login page
-        		startActivity(new Intent(SignIn.this, LoginPage.class));
-        	}
-        });
     }
-
+    
+    @OnClick(R.id.email_btn)
+    public void registerWithEmail() {
+    	// When it is clicked, give user the registration form
+		startActivity(new Intent(this, SignUp.class));
+    }
+    
+    @OnClick(R.id.login_btn)
+    public void goToLoginPage() {
+    	// When it is clicked, go to the login page
+		startActivity(new Intent(SignIn.this, LoginPage.class));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
