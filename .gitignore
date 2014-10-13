@@ -57,3 +57,5 @@ local.properties
 .texlipse
 
 .DS_Store
+
+.apt_generated/

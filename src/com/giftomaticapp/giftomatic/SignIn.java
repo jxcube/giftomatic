@@ -7,10 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -28,6 +25,7 @@ public class SignIn extends Activity {
         }
         
         setContentView(R.layout.activity_sign_in);
+        ButterKnife.inject(this);
     }
     
     @OnClick(R.id.email_btn)
@@ -36,7 +34,7 @@ public class SignIn extends Activity {
 		startActivity(new Intent(this, SignUp.class));
     }
     
-    @OnClick(R.id.login_btn)
+    @OnClick(R.id.to_login_btn)
     public void goToLoginPage() {
     	// When it is clicked, go to the login page
 		startActivity(new Intent(SignIn.this, LoginPage.class));
