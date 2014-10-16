@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffc50e0e"
+    tools:context="com.giftomaticapp.giftomatic.RandomPage" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:alpha="0.7"
+        android:background="@drawable/background"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="322dp"
+            android:layout_height="200dp"
+            android:layout_weight="8.22"
+            android:src="@drawable/shoes" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/description_back"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:text="Item Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/ImageDescription"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="5"
+            android:background="@drawable/description_back"
+            android:padding="10dp"
+            android:text="Bacon ipsum dolor sit amet shoulder frankfurter ham hock, beef meatball short loin flank leberkas. Rump cow corned beef doner. Tenderloin t-bone shoulder prosciutto."
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@drawable/description_back"
+            android:paddingLeft="10dp"
+            android:text="Price Range : IDR XXXXX"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="Feeling lucky!" />
+
+</RelativeLayout>

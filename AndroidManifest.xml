@@ -46,6 +46,14 @@
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash" >
         </activity>
+        <activity
+            android:name=".GiftGallery"
+            android:label="@string/title_activity_gift_gallery" >
+        </activity>
+        <activity
+            android:name=".RandomPage"
+            android:label="@string/title_activity_random_page" >
+        </activity>
     </application>
 
 </manifest>
