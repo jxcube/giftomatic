@@ -113,6 +113,8 @@ public class LoginPage extends Activity {
 	
 	public void goToMainPage() {
 		startActivity(new Intent(this, MainActivity.class));
+		SignIn.endAct.finish();
+		finish();
 	}
 	
 	private class LoginHandler implements OnClickListener {

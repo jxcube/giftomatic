@@ -12,7 +12,7 @@ import butterknife.OnClick;
 
 
 public class SignIn extends Activity {
-
+public static Activity endAct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,7 @@ public class SignIn extends Activity {
         
         setContentView(R.layout.activity_sign_in);
         ButterKnife.inject(this);
+        endAct = this;
     }
     
     @OnClick(R.id.email_btn)
