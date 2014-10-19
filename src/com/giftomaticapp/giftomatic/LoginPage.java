@@ -135,4 +135,15 @@ public class LoginPage extends Activity {
 		}
 		
 	}
+	private class Logout implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+			sp.edit().putBoolean("authenticated", false);
+			sp.edit().commit();
+		}
+		
+	}
 }
