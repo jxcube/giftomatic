@@ -4,9 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.giftomaticapp.giftomatic.library.SharedPrefsHelper;
 
 public class LoginPage extends Activity {
 	
@@ -102,12 +101,11 @@ public class LoginPage extends Activity {
 	}
 	
 	public void authenticate(String email, String username) {
-		SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
-		SharedPreferences.Editor editor = sp.edit();
-		editor.putBoolean("authenticated", true);
-		editor.putString("email", email);
-		editor.putString("username", username);
-		editor.commit();
+		SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+		sphelper.setAuthenticated(true);
+		sphelper.setEmail(email);
+		sphelper.setUsername(username);
+		sphelper.savePrefs();
 		goToMainPage();
 	}
 	
@@ -132,17 +130,6 @@ public class LoginPage extends Activity {
 			}
 			
 			submit(email, password);
-		}
-		
-	}
-	private class Logout implements OnClickListener {
-
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
-			sp.edit().putBoolean("authenticated", false);
-			sp.edit().commit();
 		}
 		
 	}

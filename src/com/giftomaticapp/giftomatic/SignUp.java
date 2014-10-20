@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -113,6 +114,7 @@ public class SignUp extends Activity {
 
 							// If all goes well, alert the user
 							alert("Success", "Your account has been successfully created! You can now log in");
+							startActivity(new Intent(getApplicationContext(), SignIn.class));
 						} catch (JSONException e) {
 							Log.e(TAG, e.getMessage(), e);
 						}
