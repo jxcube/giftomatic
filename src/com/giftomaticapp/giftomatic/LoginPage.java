@@ -30,7 +30,7 @@ public class LoginPage extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login_page);
+		setContentView(R.layout.fragment_login);
 		
 		emailField = (EditText) findViewById(R.id.emailField);
 		passwordField = (EditText) findViewById(R.id.passwordField);
@@ -113,6 +113,7 @@ public class LoginPage extends Activity {
 	
 	public void goToMainPage() {
 		startActivity(new Intent(this, MainActivity.class));
+		finish();
 	}
 	
 	private class LoginHandler implements OnClickListener {

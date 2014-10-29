@@ -1,36 +1,51 @@
 package com.giftomaticapp.giftomatic;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
 public class GiftGallery extends Activity {
 
 	GridView gridView;
 	String[] images = {
-		"item1",
-		"item2",
-		"item3",
-		"item4"	
+			"item1",
+			"item2",
+			"item3",
+			"item4"	
 	};
-	
+
 	int [] imageId = {
 			R.drawable.logo,
 			R.drawable.logo,	
 			R.drawable.logo,	
 			R.drawable.logo,		
 	};
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gift_gallery);
-		
-		CustomGrid adapter = new CustomGrid(GiftGallery.this, images, imageId);
+
+		// request items
+		getItemData();
+
+		CustomGrid adapter = new CustomGrid(this, images, imageId);
 		gridView = (GridView) findViewById(R.id.grid);
-		
+		gridView.setAdapter(adapter);
+
 	}
 
 	@Override
@@ -50,5 +65,42 @@ public class GiftGallery extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void requestImages() {
+		String url = "http://api.giftomaticapp.com/img/";
+		// TODO
+		
+	}
+
+	public void getItemData() {
+		String url = "http://api.giftomaticapp.com/item";
+		JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+			@Override
+			public void onResponse(JSONArray response) {
+				try {
+					List<String> tags = null;
+					for (int i = 0; i < response.length(); i++) {
+						JSONObject item = response.getJSONObject(i);
+						tags = new ArrayList<String>(); 
+						for (int j = 0; j < item.getJSONArray("tags").length(); j++) {
+							tags.add(item.getJSONArray("tags").getString(j));
+						}
+						Item it = new Item(item.getString("name"), item.getDouble("minPrice"), item.getDouble("maxPrice"), item.getString("description"), tags);
+						it.save();
+						
+						requestImages();
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError err) {
+
+			}
+		});
+		NetworkSingleton.getInstance(this).addToRequestQueue(request);
 	}
 }
