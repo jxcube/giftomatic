@@ -27,25 +27,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUp"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_sign_up"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.giftomaticapp.giftomatic.MainActivity" />
-        </activity>
-        <activity
-            android:name=".LoginPage"
-            android:label="@string/title_activity_login_page" >
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
-        </activity>
-        <activity
-            android:name=".SplashActivity"
-            android:label="@string/title_activity_splash" >
         </activity>
         <activity
             android:name=".GiftGallery"
