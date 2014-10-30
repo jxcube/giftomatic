@@ -25,7 +25,7 @@ public static Activity endAct;
         }
         
         setContentView(R.layout.activity_sign_in);
-        ButterKnife.inject(this);
+       ButterKnife.inject(this);
         endAct = this;
     }
     

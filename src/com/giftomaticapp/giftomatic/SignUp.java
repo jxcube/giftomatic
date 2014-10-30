@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 public class SignUp extends Activity {
+	public static Activity endAct;
 	private static final String TAG = "SignUp";
 
 	@InjectView(R.id.password1) EditText passwordField1;
@@ -36,6 +37,7 @@ public class SignUp extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
+		endAct = this;
 		ButterKnife.inject(this);
 	}
 

@@ -114,6 +114,7 @@ public class LoginPage extends Activity {
 	public void goToMainPage() {
 		startActivity(new Intent(this, MainActivity.class));
 		SignIn.endAct.finish();
+		SignUp.endAct.finish();
 		finish();
 	}
 	

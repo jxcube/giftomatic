@@ -1,6 +1,10 @@
 package com.giftomaticapp.giftomatic;
 
+import butterknife.OnClick;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,4 +35,13 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	@OnClick(R.id.action_logout)
+	public void logout() {
+		SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sp.edit();
+		editor.clear();
+		editor.commit();
+		startActivity(new Intent(MainActivity.this, SignIn.class));
+		finish();
+    }
 }
