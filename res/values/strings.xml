@@ -10,5 +10,6 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_gift_gallery">GiftGallery</string>
     <string name="title_activity_random_page">RandomPage</string>
+    <string name="Logout">Logout</string>
 
 </resources>

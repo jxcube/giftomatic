@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import com.giftomaticapp.giftomatic.library.SharedPrefsHelper;
+
 public class MainActivity extends Activity {
 
 	@Override
@@ -31,6 +33,13 @@ public class MainActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			return true;
+		}
+		if (id == R.id.action_logout) {
+			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+			sphelper.setAuthenticated(false);
+			sphelper.savePrefs();
+			startActivity(new Intent(this, SignIn.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

@@ -34,8 +34,8 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
-		boolean authenticated = sp.getBoolean("authenticated", false);
+		SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+		boolean authenticated = sphelper.getAuthenticated();
 		if (authenticated) {
 			startActivity(new Intent(this, MainActivity.class));
 			finish();
@@ -163,12 +163,11 @@ public class LoginActivity extends Activity {
 		}
 
 		public void authenticate(String email, String username) {
-			SharedPreferences sp = getActivity().getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
-			SharedPreferences.Editor editor = sp.edit();
-			editor.putBoolean("authenticated", true);
-			editor.putString("email", email);
-			editor.putString("username", username);
-			editor.commit();
+			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+			sphelper.setAuthenticated(true);
+			sphelper.setEmail(email);
+			sphelper.setUsername(username);
+			sphelper.savePrefs();
 
 			startActivity(new Intent(getActivity(), MainActivity.class));
 			getActivity().finish();
