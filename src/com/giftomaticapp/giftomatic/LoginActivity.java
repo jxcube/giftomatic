@@ -6,7 +6,9 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,17 +26,31 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.giftomaticapp.giftomatic.library.SharedPrefsHelper;
 
-
+/*
+ * This activity is composed of 3 fragments:
+ * 1. SelectLoginFragment -> users select their login option
+ * 2. SignUpFragment -> registration using email address
+ * 3. LogInFragment -> login with email address
+ */
 public class LoginActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
-		boolean authenticated = sphelper.getAuthenticated();
+//		SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+//		boolean authenticated = sphelper.getAuthenticated();
+//		if (authenticated) {
+//			startActivity(new Intent(this, MainActivity.class));
+//			finish();
+//		}
+		
+		// Check whether or not the user has been authenticated.
+		// It uses SharedPreferences API which essentially provides
+		// a persistent key-value data-store.
+		SharedPreferences sp = this.getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+		boolean authenticated = sp.getBoolean("authenticated", false);
 		if (authenticated) {
 			startActivity(new Intent(this, MainActivity.class));
 			finish();
@@ -64,7 +80,11 @@ public class LoginActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
+	
+	/*
+	 * This class belongs to the page where user
+	 * choose their login option.
+	 */
 	public static class SelectLoginFragment extends Fragment {
 
 		@Override
@@ -73,7 +93,10 @@ public class LoginActivity extends Activity {
 			ButterKnife.inject(this, view);
 			return view;
 		}
-
+		
+		/*
+		 * Go to login page when user clicks the login button
+		 */
 		@OnClick(R.id.to_login_btn)
 		public void goToLoginPage() {
 			FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -81,7 +104,10 @@ public class LoginActivity extends Activity {
 			transaction.addToBackStack(null);
 			transaction.commit();
 		}
-
+		
+		/*
+		 * Go to signup page when user clicks the (sign up with) email button
+		 */
 		@OnClick(R.id.email_btn)
 		public void goToSignupPage() {
 			FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -93,8 +119,11 @@ public class LoginActivity extends Activity {
 	}
 
 	public static class LogInFragment extends Fragment {
-
+		
+		// form's r-mail field
 		@InjectView(R.id.emailField) EditText emailField;
+		
+		// form's password field
 		@InjectView(R.id.passwordField) EditText passwordField;
 
 		@Override
@@ -103,11 +132,16 @@ public class LoginActivity extends Activity {
 			ButterKnife.inject(this, view);
 			return view;
 		}
-
+		
+		/*
+		 * When user clicks the login button -> validate & submit form
+		 */
 		@OnClick(R.id.login_btn)
 		public void submit() {
+			
+			// START VALIDATION PROCESS
+			//
 			final String email = emailField.getText().toString();
-
 			if (email.equals("")) {
 				Toast.makeText(getActivity(), "The email field is left blank", Toast.LENGTH_SHORT).show();
 				return;
@@ -125,9 +159,12 @@ public class LoginActivity extends Activity {
 				data.put("email", email);
 				data.put("password", password);
 			} catch (JSONException e) {
-				//				Log.e(TAG, e.getMessage(), e);
 			}
-
+			//
+			// END VALIDATION PROCESS
+			
+			// START SUBMISSION PROCESS
+			//
 			JsonObjectRequest request = new JsonObjectRequest
 					(Request.Method.POST, url, data, new Response.Listener<JSONObject>() {
 						@Override
@@ -136,7 +173,6 @@ public class LoginActivity extends Activity {
 							try {
 								message = response.getString("message");
 							} catch (JSONException e) {
-								//								Log.e(TAG, e.getMessage(), e);
 							}
 							if (message.equals("error")) {
 								Toast.makeText(getActivity(), "Invalid username or password", Toast.LENGTH_SHORT).show();
@@ -147,7 +183,6 @@ public class LoginActivity extends Activity {
 								try {
 									username = response.getString("username");
 								} catch (JSONException e) {
-									//									Log.e(TAG, e.getMessage(), e);
 								}
 								authenticate(email, username);
 							}
@@ -158,16 +193,24 @@ public class LoginActivity extends Activity {
 							Toast.makeText(getActivity(), "Connection error: are you connected to the Internet?", Toast.LENGTH_SHORT).show();
 						}
 					});
-			NetworkSingleton.getInstance(getActivity()).addToRequestQueue(request);;
+			NetworkSingleton.getInstance(getActivity()).addToRequestQueue(request);
+			//
+			// END SUBMISSION PROCESS
 		}
 
-		public void authenticate(String email, String username) {
-			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(getActivity());
-			sphelper.setAuthenticated(true);
-			sphelper.setEmail(email);
-			sphelper.setUsername(username);
-			sphelper.savePrefs();
-
+		private void authenticate(String email, String username) {
+//			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(getActivity());
+//			sphelper.setAuthenticated(true);
+//			sphelper.setEmail(email);
+//			sphelper.setUsername(username);
+//			sphelper.savePrefs();
+			
+			// Store the authentication data to the key-value store
+			// so that user can auto login when they come back to the app
+			SharedPreferences sp = getActivity().getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+			sp.edit().putBoolean("authenticated", true).putString("email", email).putString("username", username).commit();
+			
+			// Go to the main page
 			startActivity(new Intent(getActivity(), MainActivity.class));
 			getActivity().finish();
 		}

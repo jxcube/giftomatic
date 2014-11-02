@@ -1,14 +1,14 @@
 package com.giftomaticapp.giftomatic;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import com.giftomaticapp.giftomatic.library.SharedPrefsHelper;
 
 public class MainActivity extends Activity {
 
@@ -36,9 +36,11 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		if (id == R.id.action_logout) {
-			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
-			sphelper.setAuthenticated(false);
-			sphelper.savePrefs();
+//			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+//			sphelper.setAuthenticated(false);
+//			sphelper.savePrefs();
+			SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+			sp.edit().clear().commit();
 			startActivity(new Intent(this, LoginActivity.class));
 			finish();
 		}
