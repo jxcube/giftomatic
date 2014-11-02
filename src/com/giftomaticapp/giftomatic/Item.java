@@ -1,13 +1,14 @@
 package com.giftomaticapp.giftomatic;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.orm.SugarRecord;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class Item extends SugarRecord<Item> {
-	String name;
+public class Item {
+	String name, description, imageUrl;
 	double minPrice, maxPrice;
-	String description;
 	List<String> tags;
 	
 	public Item() {
@@ -23,5 +24,16 @@ public class Item extends SugarRecord<Item> {
 		this.tags = tags;
 	}
 	
+	public Item(JSONObject item) throws JSONException {
+		name = item.getString("name");
+		description = item.getString("description");
+		imageUrl = item.getString("imgUrl");
+		minPrice = item.getDouble("minPrice");
+		maxPrice = item.getDouble("maxPrice");
+		tags = new ArrayList<String>();
+		for (int i = 0; i < item.getJSONArray("tag").length(); i++) {
+			tags.add(item.getJSONArray("tag").getString(i));
+		}
+	}
 	
 }

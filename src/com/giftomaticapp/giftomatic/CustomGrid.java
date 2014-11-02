@@ -1,40 +1,45 @@
 package com.giftomaticapp.giftomatic;
 
+import java.util.List;
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.android.volley.toolbox.ImageLoader;
+import com.bumptech.glide.Glide;
 
 public class CustomGrid extends BaseAdapter {
 	private Context mContext;
-	private final String[] images;
-	private final int[] imageId; 
+	private final List<Item> items;
+	private ImageLoader loader;
 
-	public CustomGrid(Context c,String[] images, int[] imageId) {
+	public CustomGrid(Context c, List<Item> items) {
 		mContext = c;
-		this.imageId = imageId;
-		this.images = images;
+		this.items = items;
+		loader = NetworkSingleton.getInstance(mContext).getImageLoader();
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return images.length;
+		return items.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return images[position];
+		return items.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return imageId[position];
+		return getItem(position).hashCode();
 	}
 
 	@Override
@@ -43,18 +48,18 @@ public class CustomGrid extends BaseAdapter {
 		View grid;
 		LayoutInflater inflater = (LayoutInflater) mContext
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Item item = (Item) getItem(position);
+		Log.i("haha", item.imageUrl);
+		String url = "http://api.giftomaticapp.com/img/" + item.imageUrl;
 
 		if (convertView == null) {  
-
 			grid = new View(mContext);
-			grid = inflater.inflate(R.layout.grid_single, null);
-			TextView textView = (TextView) grid.findViewById(R.id.grid_text);
-			ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
-			textView.setText(images[position]);
-			imageView.setImageResource(imageId[position]);
+			grid = inflater.inflate(R.layout.grid_single, parent, false);
 		} else {
-			grid = (View) convertView;
+			grid = convertView;
 		}
+		final ImageView imageView = (ImageView) grid.findViewById(R.id.item_image);
+		Glide.with(mContext).load(url).centerCrop().placeholder(R.drawable.logo).into(imageView);
 
 		return grid;
 	}

@@ -41,11 +41,6 @@ public class GiftGallery extends Activity {
 
 		// request items
 		getItemData();
-
-		CustomGrid adapter = new CustomGrid(this, images, imageId);
-		gridView = (GridView) findViewById(R.id.grid);
-		gridView.setAdapter(adapter);
-
 	}
 
 	@Override
@@ -67,10 +62,11 @@ public class GiftGallery extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void requestImages() {
-		String url = "http://api.giftomaticapp.com/img/";
+	public void requestImages(List<Item> items) {
 		// TODO
-		
+		CustomGrid adapter = new CustomGrid(this, items);
+		gridView = (GridView) findViewById(R.id.grid);
+		gridView.setAdapter(adapter);
 	}
 
 	public void getItemData() {
@@ -79,18 +75,12 @@ public class GiftGallery extends Activity {
 			@Override
 			public void onResponse(JSONArray response) {
 				try {
-					List<String> tags = null;
+					List<Item> items = new ArrayList<Item>();
 					for (int i = 0; i < response.length(); i++) {
 						JSONObject item = response.getJSONObject(i);
-						tags = new ArrayList<String>(); 
-						for (int j = 0; j < item.getJSONArray("tags").length(); j++) {
-							tags.add(item.getJSONArray("tags").getString(j));
-						}
-						Item it = new Item(item.getString("name"), item.getDouble("minPrice"), item.getDouble("maxPrice"), item.getString("description"), tags);
-						it.save();
-						
-						requestImages();
+						items.add(new Item(item));						
 					}
+					requestImages(items);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
