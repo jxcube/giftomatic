@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 			sphelper.setAuthenticated(false);
 			sphelper.savePrefs();
 			startActivity(new Intent(this, LoginActivity.class));
-			return true;
+			finish();
 		}
 		return super.onOptionsItemSelected(item);
 	}
