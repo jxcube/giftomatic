@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
 			sphelper.setAuthenticated(false);
 			sphelper.savePrefs();
-			startActivity(new Intent(this, SignIn.class));
+			startActivity(new Intent(this, LoginActivity.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

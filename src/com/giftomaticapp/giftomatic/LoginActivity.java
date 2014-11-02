@@ -6,9 +6,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.giftomaticapp.giftomatic.library.SharedPrefsHelper;
 
 
 public class LoginActivity extends Activity {
@@ -163,7 +162,7 @@ public class LoginActivity extends Activity {
 		}
 
 		public void authenticate(String email, String username) {
-			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(getActivity());
 			sphelper.setAuthenticated(true);
 			sphelper.setEmail(email);
 			sphelper.setUsername(username);
