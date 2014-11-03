@@ -20,19 +20,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 public class GiftGallery extends Activity {
 
 	GridView gridView;
-	String[] images = {
-			"item1",
-			"item2",
-			"item3",
-			"item4"	
-	};
-
-	int [] imageId = {
-			R.drawable.logo,
-			R.drawable.logo,	
-			R.drawable.logo,	
-			R.drawable.logo,		
-	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

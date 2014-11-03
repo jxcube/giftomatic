@@ -10,18 +10,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.bumptech.glide.Glide;
 
 public class CustomGrid extends BaseAdapter {
 	private Context mContext;
 	private final List<Item> items;
-	private ImageLoader loader;
 
 	public CustomGrid(Context c, List<Item> items) {
 		mContext = c;
 		this.items = items;
-		loader = NetworkSingleton.getInstance(mContext).getImageLoader();
 	}
 
 	@Override

@@ -163,7 +163,7 @@
         android:layout_marginTop="28dp" >
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/random_item"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:adjustViewBounds="true"

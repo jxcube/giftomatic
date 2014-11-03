@@ -51,4 +51,9 @@ public class MainActivity extends Activity {
 	public void goToAllItem() {
 		startActivity(new Intent(this, GiftGallery.class));
 	}
+	
+	@OnClick(R.id.random_item)
+	public void displayRandomItem() {
+		startActivity(new Intent(this, RandomPage.class));
+	}
 }
