@@ -28,15 +28,18 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".GiftGallery"
-            android:label="@string/title_activity_gift_gallery" >
+            android:label="@string/title_activity_gift_gallery" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".RandomPage"
-            android:label="@string/title_activity_random_page" >
+            android:label="@string/title_activity_random_page" 
+            android:screenOrientation="portrait">
         </activity>
     </application>
     
@@ -52,5 +55,4 @@
     <meta-data
         android:name="DOMAIN_PACKAGE_NAME"
         android:value="com.giftomaticapp" />
-
 </manifest>
