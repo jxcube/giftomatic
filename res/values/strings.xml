@@ -11,5 +11,8 @@
     <string name="title_activity_gift_gallery">GiftGallery</string>
     <string name="title_activity_random_page">RandomPage</string>
     <string name="Logout">Logout</string>
+    <string name="title_activity_forum">Forum</string>
+    <string name="title_activity_forum_creating">Forum_creating</string>
+    <string name="title_activity_form_suggest">FormSuggest</string>
 
 </resources>

@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffc50e0e"
+    tools:context="com.giftomaticapp.giftomatic.FormSuggest" >
+
+     
+		<EditText
+		    android:id="@+id/contentform"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="73dp"
+		    android:ems="10"
+		    android:inputType="textLongMessage"
+		    android:maxLines="10" />
+
+		<TextView
+		    android:id="@+id/contentWord"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignLeft="@+id/contentform"
+		    android:layout_marginTop="36dp"
+		    android:paddingBottom="3dp"
+		    android:paddingLeft="5dp"
+		    android:paddingTop="5dp"
+		    android:text="Content"
+		    android:textAppearance="?android:attr/textAppearanceLarge"
+		    android:textStyle="bold" />
+
+		<Button
+		    android:id="@+id/Submit"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignRight="@+id/contentform"
+		    android:layout_below="@+id/contentform"
+		    android:layout_marginTop="29dp"
+		    android:text="Submit" />
+
+</RelativeLayout>
