@@ -1,16 +1,23 @@
 package com.giftomaticapp.giftomatic;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class FormSuggest extends Activity {
-
+	@InjectView(R.id.contentform) EditText contentform;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_form_suggest);
+		ButterKnife.inject(this);
 	}
 
 	@Override
@@ -30,5 +37,15 @@ public class FormSuggest extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	@OnClick(R.id.Submit)
+	public void submitThread (){
+		//get username
+		SharedPreferences sp = this.getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+		String username = sp.getString("username", "");
+		//get thread content
+		String content = contentform.getText().toString();
+		//post to the server
+		finish();
 	}
 }
