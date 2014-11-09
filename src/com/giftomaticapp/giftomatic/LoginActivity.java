@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -26,6 +28,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.sromku.simple.fb.Permission;
+import com.sromku.simple.fb.SimpleFacebook;
+import com.sromku.simple.fb.SimpleFacebookConfiguration;
+import com.sromku.simple.fb.entities.Profile;
+import com.sromku.simple.fb.listeners.OnLoginListener;
+import com.sromku.simple.fb.listeners.OnProfileListener;
 
 /*
  * This activity is composed of 3 fragments:
@@ -33,19 +41,28 @@ import com.android.volley.toolbox.JsonObjectRequest;
  * 2. SignUpFragment -> registration using email address
  * 3. LogInFragment -> login with email address
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements OnDataDeliveredListener {
+
+	Permission[] permissions = new Permission[] {
+			Permission.USER_ABOUT_ME,
+			Permission.EMAIL
+	};
+
+	SimpleFacebookConfiguration conf = null;
+	
+	static SimpleFacebook sf = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-//		SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
-//		boolean authenticated = sphelper.getAuthenticated();
-//		if (authenticated) {
-//			startActivity(new Intent(this, MainActivity.class));
-//			finish();
-//		}
-		
+		//		SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+		//		boolean authenticated = sphelper.getAuthenticated();
+		//		if (authenticated) {
+		//			startActivity(new Intent(this, MainActivity.class));
+		//			finish();
+		//		}
+
 		// Check whether or not the user has been authenticated.
 		// It uses SharedPreferences API which essentially provides
 		// a persistent key-value data-store.
@@ -55,11 +72,19 @@ public class LoginActivity extends Activity {
 			startActivity(new Intent(this, MainActivity.class));
 			finish();
 		}
-		
+
 		setContentView(R.layout.activity_login);
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction().add(R.id.login_container, new SelectLoginFragment()).commit();
 		}
+
+		conf = new SimpleFacebookConfiguration.Builder()
+		.setAppId(this.getString(R.string.facebook_app_id))
+		.setNamespace("giftomaticapp")
+		.setPermissions(permissions)
+		.build();
+
+		SimpleFacebook.setConfiguration(conf);
 	}
 
 	@Override
@@ -80,12 +105,37 @@ public class LoginActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		sf = SimpleFacebook.getInstance(this);
+	}
 	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		sf.onActivityResult(this, requestCode, resultCode, data);
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+	
+	@Override
+	public void onDataDelivered(Bundle b) {
+		SignUpFragment fragment = new SignUpFragment();
+		fragment.setArguments(b);
+		
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.login_container, fragment);
+		transaction.addToBackStack(null);
+		transaction.commit();
+	}
+
 	/*
 	 * This class belongs to the page where user
 	 * choose their login option.
 	 */
 	public static class SelectLoginFragment extends Fragment {
+		
+		OnDataDeliveredListener callback;
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -94,6 +144,18 @@ public class LoginActivity extends Activity {
 			return view;
 		}
 		
+		@Override
+		public void onAttach(Activity activity) {
+			super.onAttach(activity);
+			
+			try {
+				callback = (OnDataDeliveredListener) activity;
+			} catch (ClassCastException e) {
+				throw new ClassCastException(activity.toString()
+	                    + " must implement OnDataDeliveredListener");
+			}
+		}
+
 		/*
 		 * Go to login page when user clicks the login button
 		 */
@@ -104,7 +166,7 @@ public class LoginActivity extends Activity {
 			transaction.addToBackStack(null);
 			transaction.commit();
 		}
-		
+
 		/*
 		 * Go to signup page when user clicks the (sign up with) email button
 		 */
@@ -115,14 +177,61 @@ public class LoginActivity extends Activity {
 			transaction.addToBackStack(null);
 			transaction.commit();
 		}
+		
+		@OnClick(R.id.fb_btn)
+		public void logInWithFacebook() {
+			sf.login(new OnLoginListener() {
+				@Override
+				public void onLogin() {
+					signUpWithNoPassword();
+				}
+				
+				@Override
+				public void onNotAcceptingPermissions(Permission.Type type) {
+					
+				}
+
+				@Override
+				public void onThinking() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onException(Throwable arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onFail(String arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}
+		
+		public void signUpWithNoPassword() {
+			sf.getProfile(new OnProfileListener() {
+				@Override
+				public void onComplete(Profile profile) {
+					Bundle bundle = new Bundle();
+					bundle.putString("username", profile.getName());
+					bundle.putString("email", profile.getEmail());
+					bundle.putString("gender", profile.getGender());
+					
+					callback.onDataDelivered(bundle);
+				}
+			});
+		}
 
 	}
 
 	public static class LogInFragment extends Fragment {
-		
+
 		// form's r-mail field
 		@InjectView(R.id.emailField) EditText emailField;
-		
+
 		// form's password field
 		@InjectView(R.id.passwordField) EditText passwordField;
 
@@ -132,13 +241,13 @@ public class LoginActivity extends Activity {
 			ButterKnife.inject(this, view);
 			return view;
 		}
-		
+
 		/*
 		 * When user clicks the login button -> validate & submit form
 		 */
 		@OnClick(R.id.login_btn)
 		public void submit() {
-			
+
 			// START VALIDATION PROCESS
 			//
 			final String email = emailField.getText().toString();
@@ -162,7 +271,7 @@ public class LoginActivity extends Activity {
 			}
 			//
 			// END VALIDATION PROCESS
-			
+
 			// START SUBMISSION PROCESS
 			//
 			JsonObjectRequest request = new JsonObjectRequest
@@ -199,17 +308,17 @@ public class LoginActivity extends Activity {
 		}
 
 		private void authenticate(String email, String username) {
-//			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(getActivity());
-//			sphelper.setAuthenticated(true);
-//			sphelper.setEmail(email);
-//			sphelper.setUsername(username);
-//			sphelper.savePrefs();
-			
+			//			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(getActivity());
+			//			sphelper.setAuthenticated(true);
+			//			sphelper.setEmail(email);
+			//			sphelper.setUsername(username);
+			//			sphelper.savePrefs();
+
 			// Store the authentication data to the key-value store
 			// so that user can auto login when they come back to the app
 			SharedPreferences sp = getActivity().getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
 			sp.edit().putBoolean("authenticated", true).putString("email", email).putString("username", username).commit();
-			
+
 			// Go to the main page
 			startActivity(new Intent(getActivity(), MainActivity.class));
 			getActivity().finish();
@@ -229,6 +338,20 @@ public class LoginActivity extends Activity {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View view = inflater.inflate(R.layout.fragment_signup, container, false);
 			ButterKnife.inject(this, view);
+			
+			Bundle args = getArguments();
+			if (!args.isEmpty()) {
+				usernameField.setText(args.getCharSequence("username"));
+				emailField.setText(args.getCharSequence("email"));
+				genderField.check(R.id.male_btn);
+				if (args.getCharSequence("gender").toString().equals("female")) {
+					genderField.check(R.id.female_btn);
+				};
+				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
+				imm.showSoftInput(passwordField1, 0);
+				passwordField1.requestFocus();
+			}
+			
 			return view;
 		}
 
@@ -312,7 +435,7 @@ public class LoginActivity extends Activity {
 				data.put("password", password);
 				data.put("gender", gender);
 			} catch (JSONException e) {
-//				Log.e(TAG, e.getMessage(), e);
+				//				Log.e(TAG, e.getMessage(), e);
 			}
 
 			// Create the request
@@ -333,7 +456,7 @@ public class LoginActivity extends Activity {
 								// If all goes well, alert the user
 								Toast.makeText(getActivity(), "Your account has been successfully created! You can now log in", Toast.LENGTH_SHORT).show();
 							} catch (JSONException e) {
-//								Log.e(TAG, e.getMessage(), e);
+								//								Log.e(TAG, e.getMessage(), e);
 							}
 						}
 					}, new Response.ErrorListener() {

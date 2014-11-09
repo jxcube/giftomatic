@@ -14,5 +14,7 @@
     <string name="title_activity_forum">Forum</string>
     <string name="title_activity_forum_creating">Forum_creating</string>
     <string name="title_activity_form_suggest">FormSuggest</string>
+    <string name="facebook_app_id">1507570869512915</string>
+    <string name="title_facebook_login">Log in to Facebook</string>
 
 </resources>

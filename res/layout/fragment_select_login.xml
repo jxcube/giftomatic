@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
             android:layout_marginLeft="25dp"
-            android:text="Sign In with:"
+            android:text="Sign Up with:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:typeface="sans" />
 
@@ -104,6 +104,7 @@
         android:layout_width="fill_parent"
         android:layout_height="25dp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
