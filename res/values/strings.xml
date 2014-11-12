@@ -17,5 +17,6 @@
     <string name="facebook_app_id">1507570869512915</string>
     <string name="title_facebook_login">Log in to Facebook</string>
     <string name="title_activity_forum_list">ForumList</string>
+    <string name="random_item">Random Item Image</string>
 
 </resources>
