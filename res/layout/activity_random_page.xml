@@ -1,75 +1,64 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#ffc50e0e"
-    tools:context="com.giftomaticapp.giftomatic.RandomPage" >
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:alpha="0.7"
-        android:background="@drawable/background"
-        android:orientation="vertical" >
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
-
-        <ImageView
-            android:id="@+id/randomImage"
-            android:layout_height="warp_content"
-            android:layout_width="match_parent"
-             />
-
-        <TextView
-            android:id="@+id/item_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/description_back"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="italic" />
+            android:background="@drawable/background"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp" >
 
-        <TextView
-            android:id="@+id/item_description"
-            style="@style/ImageDescription"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="5"
-            android:background="@drawable/description_back"
-            android:padding="10dp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            <ImageView
+                android:id="@+id/randomImage"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/random_item"
+                android:src="@drawable/logo" />
 
-        <TextView
-            android:id="@+id/item_price_range"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/description_back"
-            android:paddingLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/description_back"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="8dp" >
+                
+                <TextView
+                    android:id="@+id/item_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="25sp" />
 
-    <Button
-        android:id="@+id/get_random_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:text="Feeling lucky!" />
+                <TextView
+                    android:id="@+id/item_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp" />
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/item_price_range"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/get_random_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Draw!" />
+
+        </LinearLayout>
+
+</ScrollView>
