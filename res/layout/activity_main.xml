@@ -30,7 +30,7 @@
             <TextView
                 style="@style/ImageTitle"
                 android:layout_height="40dp"
-                android:text="Hot Trends" />
+                android:text="GIFT GALLERY" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -94,7 +94,7 @@
             <TextView
                 style="@style/ImageTitle"
                 android:layout_height="40dp"
-                android:text="Valentines Gift Ideas" />
+                android:text="IDEAS FORUM" />
         </RelativeLayout>
 
         <RelativeLayout
