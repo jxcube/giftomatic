@@ -42,7 +42,7 @@ public class RandomPage extends Activity {
 			public void onResponse(JSONObject res) {
 				try {
 					String imgUrl = "http://api.giftomaticapp.com/img/" + res.getString("imgUrl");
-					Glide.with(RandomPage.this).load(imgUrl).placeholder(R.drawable.logo).into(image);
+					Glide.with(RandomPage.this).load(imgUrl).centerCrop().placeholder(R.drawable.logo).into(image);
 					itemName.setText(res.getString("name"));
 					itemDesc.setText(res.getString("description"));
 				} catch (JSONException e) {

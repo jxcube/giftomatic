@@ -29,8 +29,8 @@
 
         <ImageView
             android:id="@+id/randomImage"
-            android:layout_height="50dp"
-            android:layout_width="50dp"
+            android:layout_height="warp_content"
+            android:layout_width="match_parent"
              />
 
         <TextView
