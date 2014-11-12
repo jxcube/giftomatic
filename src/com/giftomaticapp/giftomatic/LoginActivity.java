@@ -1,5 +1,8 @@
 package com.giftomaticapp.giftomatic;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,7 +13,13 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -340,7 +349,7 @@ public class LoginActivity extends Activity implements OnDataDeliveredListener {
 			ButterKnife.inject(this, view);
 			
 			Bundle args = getArguments();
-			if (!args.isEmpty()) {
+			if (args != null && !args.isEmpty()) {
 				usernameField.setText(args.getCharSequence("username"));
 				emailField.setText(args.getCharSequence("email"));
 				genderField.check(R.id.male_btn);

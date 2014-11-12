@@ -56,4 +56,9 @@ public class MainActivity extends Activity {
 	public void displayRandomItem() {
 		startActivity(new Intent(this, RandomPage.class));
 	}
+	
+	@OnClick(R.id.forum_btn)
+	public void createNewThread() {
+		startActivity(new Intent(this, CreateForum.class));
+	}
 }

@@ -50,7 +50,7 @@
             android:label="@string/title_activity_forum" >
         </activity>
         <activity
-            android:name=".Forum_creating"
+            android:name=".CreateForum"
             android:label="@string/title_activity_forum_creating" >
         </activity>
         <activity
