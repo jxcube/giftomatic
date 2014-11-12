@@ -29,15 +29,12 @@
 
         <ImageView
             android:id="@+id/randomImage"
-            android:layout_width="322dp"
-            android:layout_height="200dp"
-            android:layout_weight="8.22"
              />
 
         <TextView
             android:id="@+id/item_name"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/description_back"
             android:paddingBottom="10dp"
@@ -58,7 +55,7 @@
         <TextView
             android:id="@+id/item_price_range"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/description_back"
             android:paddingLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
