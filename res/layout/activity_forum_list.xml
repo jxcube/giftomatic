@@ -5,11 +5,29 @@
     android:background="#ffc50e0e"
     android:orientation="vertical" >
 
-    <GridView
-        android:id="@+id/forumlist"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:stretchMode="columnWidth" />
+    <LinearLayout
+        android:id="@+id/thread"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.8"
+        android:background="#C7B5C0"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp" >
+   		 <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
+    	<EditText
+        android:id="@+id/username"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+       
+
+        <requestFocus />
+    </EditText>
+     </LinearLayout>
 
 </LinearLayout>
