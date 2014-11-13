@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
 			sp.edit().clear().commit();
 			startActivity(new Intent(this, LoginActivity.class));
 			finish();
+		} else if (id == R.id.new_thread) {
+			startActivity(new Intent(this, CreateForum.class));
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -58,7 +60,7 @@ public class MainActivity extends Activity {
 	}
 	
 	@OnClick(R.id.forum_btn)
-	public void createNewThread() {
-		startActivity(new Intent(this, CreateForum.class));
+	public void goToForum() {
+		startActivity(new Intent(this, ForumList.class));
 	}
 }

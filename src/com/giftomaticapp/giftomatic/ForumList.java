@@ -49,6 +49,7 @@ public class ForumList extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
 	public void requestData(String[] threadlist) {
 		// TODO
 		ForumGrid adapter = new ForumGrid(this, threadlist);
@@ -64,8 +65,8 @@ public class ForumList extends Activity {
 			@Override
 			public void onResponse(JSONArray response) {
 				try {
-					
-					for (int i = 0; i < response.length(); i++) {
+					forumlist = new String[response.length()];
+					for (int i = 0; i < response.length()*2; i++) {
 						JSONObject thread = response.getJSONObject(i);
 						//catch title
 						//catch the creator of the thread
@@ -73,7 +74,9 @@ public class ForumList extends Activity {
 						String title = thread.getString("title");
 						forumlist[i] = title;
 						i++;
-						String username = thread.getString("username");
+						JSONArray posts = thread.getJSONArray("Posts");
+						JSONObject firstPost = posts.getJSONObject(posts.length()-1);
+						String username = firstPost.getJSONObject("User").getString("username");
 						forumlist[i] = username;
 					}
 					requestData(forumlist);
@@ -88,10 +91,5 @@ public class ForumList extends Activity {
 			}
 		});
 		NetworkSingleton.getInstance(this).addToRequestQueue(request);
-	}
-	@OnClick(R.id.threadcreate)
-	public void kaboom()
-	{
-		startActivity(new Intent(ForumList.this, CreateForum.class));
 	}
 }
