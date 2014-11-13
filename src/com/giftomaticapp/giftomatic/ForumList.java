@@ -1,21 +1,18 @@
 package com.giftomaticapp.giftomatic;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.TextView;
-import butterknife.OnClick;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -50,22 +47,16 @@ public class ForumList extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void requestData(String[] threadlist) {
-		// TODO
-		ForumGrid adapter = new ForumGrid(this, threadlist);
-		gridView = (GridView) findViewById(R.id.forumlist);
-		gridView.setAdapter(adapter);
-	}
-	
-	
 	public void getThread()
 	{
+		
+     
 		String url = "http://api.giftomaticapp.com/thread";
 		JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 			@Override
 			public void onResponse(JSONArray response) {
 				try {
-					forumlist = new String[response.length()];
+					forumlist = new String[response.length()*2];
 					for (int i = 0; i < response.length()*2; i++) {
 						JSONObject thread = response.getJSONObject(i);
 						//catch title
@@ -74,12 +65,22 @@ public class ForumList extends Activity {
 						String title = thread.getString("title");
 						forumlist[i] = title;
 						i++;
-						JSONArray posts = thread.getJSONArray("Posts");
+						JSONArray posts = thread.getJSONArray("posts");
 						JSONObject firstPost = posts.getJSONObject(posts.length()-1);
-						String username = firstPost.getJSONObject("User").getString("username");
+						String username = firstPost.getJSONObject("user").getString("username");
 						forumlist[i] = username;
 					}
-					requestData(forumlist);
+					for (int i = 0; i < response.length()*2; i++) 
+					{
+						LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+						final View addView = inflater.inflate(R.layout.activity_forum_list, null);
+						final EditText editText = (EditText) addView.findViewById(R.id.title);
+						final EditText editusername = (EditText) addView.findViewById(R.id.username);
+						
+						editText.setText(forumlist[i]);
+						i++;
+						editusername.setText(forumlist[i]);
+					}
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

@@ -47,9 +47,9 @@ public class ForumGrid extends BaseAdapter{
 		} else {
 			gridView = convertView;
 		}
-		TextView textView = (TextView) gridView
-				.findViewById(R.id.forumlist);
-		textView.setText(threads[position]);
+////		TextView textView = (TextView) gridView
+////				.findViewById(R.);
+//		textView.setText(threads[position]);
 		return gridView;
 	}
 	
