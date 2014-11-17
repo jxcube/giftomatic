@@ -46,16 +46,8 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".Forum"
-            android:label="@string/title_activity_forum" >
-        </activity>
-        <activity
             android:name=".CreateForum"
             android:label="@string/title_activity_forum_creating" >
-        </activity>
-        <activity
-            android:name=".FormSuggest"
-            android:label="@string/title_activity_form_suggest" >
         </activity>
 
         <meta-data
@@ -63,8 +55,12 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".ForumList"
-            android:label="@string/title_activity_forum_list" >
+            android:name=".BrowseForumActivity"
+            android:label="@string/title_activity_browse_forum" >
+        </activity>
+        <activity
+            android:name=".ViewForumActivity"
+            android:label="@string/title_activity_view_forum" >
         </activity>
     </application>
 

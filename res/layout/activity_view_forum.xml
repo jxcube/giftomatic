@@ -1,0 +1,12 @@
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="8dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="#ffc50e0e"
+    android:id="@+id/post_list"
+    tools:context="${relativePackage}.${activityClass}" >
+
+</ListView>

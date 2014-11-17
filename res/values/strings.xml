@@ -18,5 +18,7 @@
     <string name="title_facebook_login">Log in to Facebook</string>
     <string name="title_activity_forum_list">ForumList</string>
     <string name="random_item">Random Item Image</string>
+    <string name="title_activity_browse_forum">BrowseForumActivity</string>
+    <string name="title_activity_view_forum">ViewForumActivity</string>
 
 </resources>

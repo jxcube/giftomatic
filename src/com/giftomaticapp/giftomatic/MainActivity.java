@@ -61,6 +61,6 @@ public class MainActivity extends Activity {
 	
 	@OnClick(R.id.forum_btn)
 	public void goToForum() {
-		startActivity(new Intent(this, ForumList.class));
+		startActivity(new Intent(this, BrowseForumActivity.class));
 	}
 }
