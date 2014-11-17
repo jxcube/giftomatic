@@ -20,5 +20,6 @@
     <string name="random_item">Random Item Image</string>
     <string name="title_activity_browse_forum">BrowseForumActivity</string>
     <string name="title_activity_view_forum">ViewForumActivity</string>
+    <string name="title_activity_item_detail">ItemDetail</string>
 
 </resources>
