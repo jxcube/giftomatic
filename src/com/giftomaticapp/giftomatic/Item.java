@@ -17,16 +17,18 @@ public class Item {
 	}
 
 	public Item(int id, String name, double minPrice, double maxPrice,
-			String description, List<String> tags) {
+			String imageUrl, String description, List<String> tags) {
 		this.id = id;
 		this.name = name;
 		this.minPrice = minPrice;
 		this.maxPrice = maxPrice;
 		this.description = description;
-		this.tags = tags;
+		this.tags = tags;;
+		this.imageUrl = imageUrl;
 	}
 	
 	public Item(JSONObject item) throws JSONException {
+		id  =item.getInt("id");
 		name = item.getString("name");
 		description = item.getString("description");
 		imageUrl = item.getString("imgUrl");
@@ -43,11 +45,12 @@ public class Item {
 		String description = json.getString("description");
 		double minPrice = json.getDouble("minPrice");
 		double maxPrice = json.getDouble("maxPrice");
+		String imageUrl = json.getString("imgUrl");
 		List<String> tags = new ArrayList<String>();
 		JSONArray tagsArray = json.getJSONArray("tag");
 		for (int i = 0; i < tagsArray.length(); i++) {
 			tags.add(tagsArray.getString(i));
 		}
-		return new Item(id, name, minPrice, maxPrice, description, tags);
+		return new Item(id, name, minPrice, maxPrice, imageUrl, description, tags);
 	}
 }

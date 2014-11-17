@@ -65,7 +65,7 @@ public class GiftGallery extends Activity {
 			public void onItemClick(AdapterView<?> parent,
 					View v, int position, long id) {
 				Intent intent = new Intent(GiftGallery.this, ItemDetail.class);
-				intent.putExtra("itemId", items.get(position).name);
+				intent.putExtra("itemId", items.get(position).id);
 				startActivity(intent);
 			}
 		});

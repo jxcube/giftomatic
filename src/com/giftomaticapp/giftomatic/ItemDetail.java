@@ -9,6 +9,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import android.app.Activity;
 import android.content.Intent;
@@ -29,6 +30,7 @@ public class ItemDetail extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_item_detail);
+		ButterKnife.inject(this);
 		getItem();
 	}
 
@@ -76,6 +78,7 @@ public class ItemDetail extends Activity {
 	
 	private void show(Item item) {
 		String url = "http://api.giftomaticapp.com/img/" + item.imageUrl;
+		System.out.println(url);
 		Glide.with(this)
 			.load(url)
 			.centerCrop()

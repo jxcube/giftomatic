@@ -46,7 +46,6 @@ public class CustomGrid extends BaseAdapter {
 		LayoutInflater inflater = (LayoutInflater) mContext
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		Item item = (Item) getItem(position);
-		Log.i("haha", item.imageUrl);
 		String url = "http://api.giftomaticapp.com/img/" + item.imageUrl;
 
 		if (convertView == null) {  
