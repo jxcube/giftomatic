@@ -3,10 +3,13 @@ package com.giftomaticapp.giftomatic;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.Alert;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -45,4 +48,22 @@ public class ViewForumActivity extends Activity {
 		});
 		NetworkSingleton.getInstance(this).addToRequestQueue(request);
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.thread_action, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.new_thread) {
+			Alert.alert(this, "About to create new thread");
+		}
+		return super.onOptionsItemSelected(item);			
+	}
+	
+	
+	
 }
