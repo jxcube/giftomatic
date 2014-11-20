@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LoginActivity"
+            android:name="com.giftomaticapp.giftomatic.LoginActivity"
             android:configChanges="orientation|keyboard"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
@@ -31,22 +31,22 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.giftomaticapp.giftomatic.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".GiftGallery"
+            android:name="com.giftomaticapp.giftomatic.GiftGallery"
             android:label="@string/title_activity_gift_gallery"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".RandomPage"
+            android:name="com.giftomaticapp.giftomatic.RandomPage"
             android:label="@string/title_activity_random_page"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".CreateForum"
+            android:name="com.giftomaticapp.giftomatic.CreateForum"
             android:label="@string/title_activity_forum_creating" >
         </activity>
 
@@ -55,20 +55,24 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".BrowseForumActivity"
+            android:name="com.giftomaticapp.giftomatic.BrowseForumActivity"
             android:label="@string/title_activity_browse_forum" >
         </activity>
         <activity
-            android:name=".ViewForumActivity"
+            android:name="com.giftomaticapp.giftomatic.ViewForumActivity"
             android:label="@string/title_activity_view_forum" >
         </activity>
         <activity
-            android:name=".ItemDetail"
+            android:name="com.giftomaticapp.giftomatic.ItemDetail"
             android:label="@string/title_activity_item_detail" >
         </activity>
         <activity
-            android:name=".SuggestForm"
+            android:name="com.giftomaticapp.giftomatic.SuggestForm"
             android:label="@string/title_activity_suggest_form" >
+        </activity>
+        <activity
+            android:name="com.giftomaticapp.giftomatic.Filter"
+            android:label="@string/title_activity_filter" >
         </activity>
     </application>
 
