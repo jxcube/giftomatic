@@ -21,5 +21,6 @@
     <string name="title_activity_browse_forum">BrowseForumActivity</string>
     <string name="title_activity_view_forum">ViewForumActivity</string>
     <string name="title_activity_item_detail">ItemDetail</string>
+    <string name="title_activity_suggest_form">SuggestForm</string>
 
 </resources>

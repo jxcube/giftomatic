@@ -19,14 +19,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 public class ViewForumActivity extends Activity {
-
+	int threadId;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_forum);
 		
 		Intent intent = getIntent();
-		int threadId = intent.getIntExtra("threadId", -1);
+		threadId = intent.getIntExtra("threadId", -1);
 		
 		String url = "http://api.giftomaticapp.com/thread/" + threadId;
 		final ListView lv = (ListView) findViewById(R.id.post_list);
@@ -59,7 +59,8 @@ public class ViewForumActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == R.id.new_thread) {
-			Alert.alert(this, "About to create new thread");
+			Intent intent = new Intent(ViewForumActivity.this, SuggestForm.class);
+			intent.putExtra("threadId", threadId);
 		}
 		return super.onOptionsItemSelected(item);			
 	}

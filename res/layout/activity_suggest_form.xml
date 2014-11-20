@@ -7,13 +7,37 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#ffc50e0e"
-    tools:context="com.giftomaticapp.giftomatic.FormSuggest" >
+    tools:context="com.giftomaticapp.giftomatic.Forum_creating" >
 
-     
+          <TextView
+              android:id="@+id/title"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingBottom="3dp"
+              android:paddingLeft="20dp"
+              android:paddingTop="5dp"
+              android:text="Title"
+              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:textStyle="bold" />
+
+		<EditText
+		    android:id="@+id/titleform"
+		    android:layout_width="259dp"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="18dp"
+		    android:layout_marginTop="29dp"
+		    android:ems="10">
+
+		    <requestFocus />
+		</EditText>
+
 		<EditText
 		    android:id="@+id/contentform"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
+		    android:layout_alignLeft="@+id/titleform"
+		    android:layout_alignRight="@+id/titleform"
+		    android:layout_below="@+id/titleform"
 		    android:layout_marginTop="73dp"
 		    android:ems="10"
 		    android:inputType="textLongMessage"
@@ -24,6 +48,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_alignLeft="@+id/contentform"
+		    android:layout_below="@+id/titleform"
 		    android:layout_marginTop="36dp"
 		    android:paddingBottom="3dp"
 		    android:paddingLeft="5dp"

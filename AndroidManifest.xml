@@ -66,6 +66,10 @@
             android:name=".ItemDetail"
             android:label="@string/title_activity_item_detail" >
         </activity>
+        <activity
+            android:name=".SuggestForm"
+            android:label="@string/title_activity_suggest_form" >
+        </activity>
     </application>
 
     <meta-data
