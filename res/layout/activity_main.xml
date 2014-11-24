@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="70dp" >
+        android:layout_marginTop="30dp" >
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -176,7 +176,7 @@
             android:text="RANDOM GIFT" />
     </RelativeLayout>
 
-    <EditText
+    <!-- <EditText
         android:id="@+id/titleform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -188,15 +188,15 @@
         android:inputType="text" >
 
         <requestFocus />
-    </EditText>
+    </EditText> -->
 
-    <SearchView
+    <!-- <SearchView
         android:id="@+id/searchView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/view_flipper"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp" >
-    </SearchView>
+    </SearchView> -->
 
 </RelativeLayout>
