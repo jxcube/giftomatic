@@ -70,6 +70,10 @@
             android:name=".SuggestForm"
             android:label="@string/title_activity_suggest_form" >
         </activity>
+        <activity
+            android:name=".FilterActivity"
+            android:label="@string/title_activity_filter" >
+        </activity>
     </application>
 
     <meta-data
