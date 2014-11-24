@@ -22,10 +22,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class SuggestForm extends Activity {
-	int threadId;
+	private int threadId;
 	@InjectView(R.id.titleform) EditText titleform;
 	@InjectView(R.id.contentform) EditText contentform;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,41 +70,42 @@ public class SuggestForm extends Activity {
 			return;
 		}
 		//get threadID
-		String url = "http://api.giftomaticapp.com/post";
+		String url = "http://api.giftomaticapp.com/thread/" + threadId;
 		JSONObject data = new JSONObject();
 		try {
-			data.put("threadid", threadId);
 			data.put("username", username);
 			data.put("title", titleThread);
 			data.put("content", content);
+			JsonObjectRequest request = new JsonObjectRequest(Method.POST, url, data,
+					new Response.Listener<JSONObject>() {
+				@Override
+				public void onResponse(JSONObject res) {
+					try {
+						String message = res.getString("message");
+						if (message.equals("error")) {
+							Toast.makeText(SuggestForm.this, res.getString("detail"), Toast.LENGTH_SHORT).show();
+							return;
+						} else {
+							Toast.makeText(SuggestForm.this, "You have successfully replied to this thread!", Toast.LENGTH_SHORT).show();
+
+							// Go to another activity, what?
+							Intent intent = new Intent(SuggestForm.this, ViewForumActivity.class);
+							intent.putExtra("threadId", threadId);
+							startActivity(intent);
+							finish();
+						}
+					} catch (JSONException e) {}
+				}
+			}, new Response.ErrorListener() {
+				@Override
+				public void onErrorResponse(VolleyError err) {
+					Toast.makeText(SuggestForm.this, "Connection error: are you connected to the internet?", Toast.LENGTH_SHORT).show();
+				}
+			});
+			NetworkSingleton.getInstance(this).addToRequestQueue(request);
 		} catch (JSONException e) {
 		}
-		JsonObjectRequest request = new JsonObjectRequest(Method.POST, url, data,
-				new Response.Listener<JSONObject>() {
-					@Override
-					public void onResponse(JSONObject res) {
-						try {
-							String message = res.getString("message");
-							if (message.equals("user not found")) {
-								Toast.makeText(SuggestForm.this, message, Toast.LENGTH_SHORT).show();
-								return;
-							} else {
-								Toast.makeText(SuggestForm.this, "You have successfully created a new thread!", Toast.LENGTH_SHORT).show();
-								
-								// Go to another activity, what?
-								startActivity(new Intent(SuggestForm.this, MainActivity.class));
-								finish();
-							}
-						} catch (JSONException e) {}
-					}
-				}, new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError err) {
-						
-					}
-				});
-		NetworkSingleton.getInstance(this).addToRequestQueue(request);
 	}
 }
-	
+
 

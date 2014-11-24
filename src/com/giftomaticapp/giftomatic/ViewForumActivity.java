@@ -3,7 +3,6 @@ package com.giftomaticapp.giftomatic;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import utils.Alert;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -61,6 +60,8 @@ public class ViewForumActivity extends Activity {
 		if (id == R.id.new_thread) {
 			Intent intent = new Intent(ViewForumActivity.this, SuggestForm.class);
 			intent.putExtra("threadId", threadId);
+			startActivity(intent);
+			finish();
 		}
 		return super.onOptionsItemSelected(item);			
 	}
