@@ -71,10 +71,13 @@
             android:label="@string/title_activity_suggest_form" >
         </activity>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity
             android:name="com.giftomaticapp.giftomatic.Filter"
             android:label="@string/title_activity_filter" >
         </activity>
+=======
+>>>>>>> parent of 1921428... adding testing filter
 =======
 >>>>>>> parent of 1921428... adding testing filter
     </application>
