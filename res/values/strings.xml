@@ -22,6 +22,10 @@
     <string name="title_activity_view_forum">ViewForumActivity</string>
     <string name="title_activity_item_detail">ItemDetail</string>
     <string name="title_activity_suggest_form">SuggestForm</string>
+<<<<<<< HEAD
     <string name="title_activity_filter">Filter</string>
+=======
+    <string name="title_activity_filter">FilterActivity</string>
+>>>>>>> origin/filter-main-page
 
 </resources>
