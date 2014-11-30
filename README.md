@@ -5,12 +5,11 @@ Gift-O-Matic (GOM) is a gift-suggestion engine in the cloud. GOM uses client-ser
 
 READ THIS
 ---------
-If you encounter an error related to using third-party libraries (e.g., Volley, etc), try:
+Before you actually start developing the app, please:
 
-1. inside Eclipse ADT, right-click on your project directory,
-2. click **Properties**,
-3. on the LHS, choose **Java Build Path**,
-4. click on **Libraries** tab,
-5. click on **Add External JARs...**,
-6. locate the JAR file (inside **libs/** directory),
-7. click **OK**
+1. Download [Facebook SDK for Android](https://developers.facebook.com/docs/android/) and extract it
+2. In Eclipse, go to File > Import
+3. Choose 'Existing Projects into Workspace' and click Next
+4. Select root directory by clicking 'browse' button on the right and choose the folder that you just extracted in number 1
+5. Select ONLY 'FacebookSDK' inside 'Projects' and click Finish
+6. Next: follow [this](https://github.com/sromku/android-simple-facebook/wiki/Setup-project) until step number 4 (IMPORTANT!!)
