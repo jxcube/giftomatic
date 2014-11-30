@@ -1,202 +1,110 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingStart="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
     android:background="#ffc50e0e"
-    android:orientation="vertical" >
+    android:orientation="vertical">
     
-    <ViewFlipper
-        android:id="@+id/view_flipper"
-        android:layout_width="fill_parent"
-        android:layout_height="110dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp" >
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <ImageView
-                android:id="@+id/all_item"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/shoes" />
-
-            <TextView
-                style="@style/ImageTitle"
-                android:layout_height="40dp"
-                android:text="GIFT GALLERY" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/wallets" />
-
-            <TextView
-                style="@style/ImageTitle"
-                android:layout_height="40dp"
-                android:text="Nike Wallets" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bags" />
-
-            <TextView
-                style="@style/ImageTitle"
-                android:layout_height="40dp"
-                android:text="Jansport Bags" />
-        </RelativeLayout>
-    </ViewFlipper>
-
-    <ViewFlipper
-        android:id="@+id/forum_btn"
-        android:layout_width="fill_parent"
-        android:layout_height="110dp"
-        android:layout_alignLeft="@+id/view_flipper"
-        android:layout_below="@+id/view_flipper"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="39dp" >
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/valentines" />
-
-            <TextView
-                style="@style/ImageTitle"
-                android:layout_height="40dp"
-                android:text="IDEAS FORUM" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/chocolates" />
-
-            <TextView
-                style="@style/ImageTitle"
-                android:layout_height="40dp"
-                android:text="Chocolates" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/teddy" />
-
-            <TextView
-                style="@style/ImageTitle"
-                android:layout_height="40dp"
-                android:text="Teddy Bears" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/roses" />
-
-            <TextView
-                style="@style/ImageTitle"
-                android:layout_height="40dp"
-                android:text="Roses" />
-        </RelativeLayout>
-    </ViewFlipper>
-
     <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="fill_parent"
+        android:id="@+id/all_item"
+        android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/forum_btn"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="28dp" >
-
+        android:layout_marginBottom="20dp"
+        android:background="#000">
+        
         <ImageView
-            android:id="@+id/random_item"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/random" />
-
+            android:src="@drawable/shoes"
+            android:contentDescription="@string/main_activity_gift_gallery" />
+        
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#8000"
+            android:layout_alignParentBottom="true"/>
+        
         <TextView
-            style="@style/ImageTitle"
-            android:layout_height="40dp"
-            android:text="RANDOM GIFT" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:text="@string/main_activity_gift_gallery" />
+        
     </RelativeLayout>
-
-    <!-- <EditText
-        android:id="@+id/titleform"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/view_flipper"
-        android:layout_alignTop="@+id/searchView1"
-        android:layout_toRightOf="@+id/searchView1"
-        android:ems="10"
-        android:hint="Search here"
-        android:inputType="text" >
-
-        <requestFocus />
-    </EditText> -->
-
-    <!-- <SearchView
-        android:id="@+id/searchView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/view_flipper"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp" >
-    </SearchView> -->
-
-</RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/forum_btn"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        android:background="#000">
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/valentines"
+            android:contentDescription="@string/main_activity_ideas_forum" />
+        
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#8000"
+            android:layout_alignParentBottom="true"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:text="@string/main_activity_ideas_forum" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/random_item"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        android:background="#000">
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/random"
+            android:contentDescription="@string/main_activity_random_gift" />
+        
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#8000"
+            android:layout_alignParentBottom="true"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:text="@string/main_activity_random_gift" />
+        
+    </RelativeLayout>
+    
+</LinearLayout>

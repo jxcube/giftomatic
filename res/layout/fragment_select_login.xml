@@ -64,14 +64,6 @@
             android:background="@drawable/fb_button" />
 
         <ImageButton
-            android:id="@+id/gplus_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="6dp"
-            android:background="@drawable/google_button" />
-
-        <ImageButton
             android:id="@+id/email_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

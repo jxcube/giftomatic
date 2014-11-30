@@ -6,21 +6,23 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_sign_up">Sign Up</string>
     <string name="title_activity_login_page">Log In</string>
-    <string name="title_activity_main">Main</string>
-    <string name="title_activity_splash">SplashActivity</string>
-    <string name="title_activity_gift_gallery">GiftGallery</string>
-    <string name="title_activity_random_page">RandomPage</string>
+    <string name="title_activity_main">Gift-O-Matic</string>
+    <string name="title_activity_gift_gallery">Gift Gallery</string>
+    <string name="title_activity_random_page">Gift Randomizer</string>
     <string name="Logout">Logout</string>
-    <string name="title_activity_forum">Forum</string>
-    <string name="title_activity_forum_creating">Request a recommendation</string>
-    <string name="title_activity_form_suggest">FormSuggest</string>
+    <string name="title_activity_forum">Discussions</string>
+    <string name="title_activity_forum_creating">Create New Thread</string>
+    <string name="title_activity_form_suggest">Reply to Thread</string>
     <string name="facebook_app_id">1507570869512915</string>
     <string name="title_facebook_login">Log in to Facebook</string>
-    <string name="title_activity_forum_list">ForumList</string>
+    <string name="title_activity_forum_list">Discussions</string>
     <string name="random_item">Random Item Image</string>
-    <string name="title_activity_browse_forum">BrowseForumActivity</string>
-    <string name="title_activity_view_forum">ViewForumActivity</string>
-    <string name="title_activity_item_detail">ItemDetail</string>
-    <string name="title_activity_suggest_form">SuggestForm</string>
+    <string name="title_activity_browse_forum">Discussions</string>
+    <string name="title_activity_view_forum">Discussions</string>
+    <string name="title_activity_item_detail">We Recommend</string>
+    <string name="title_activity_suggest_form">Reply to Thread</string>
+    <string name="main_activity_gift_gallery">GIFT GALLERY</string>
+    <string name="main_activity_ideas_forum">IDEAS FORUM</string>
+    <string name="main_activity_random_gift">RANDOM GIFT</string>
 
 </resources>

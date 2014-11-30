@@ -439,7 +439,7 @@ public class LoginActivity extends Activity implements OnDataDeliveredListener {
 							try {
 								// Check if there is an error or not in querying to the database
 								if (response.getString("message") != null && response.getString("message").equals("error")) {
-									Toast.makeText(getActivity(), "Our server is currently experiencing some issues, please try again later", Toast.LENGTH_SHORT).show();
+									Toast.makeText(getActivity(), response.getString("detail"), Toast.LENGTH_SHORT).show();
 									return;
 								}
 
