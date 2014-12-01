@@ -195,7 +195,7 @@ public class LoginActivity extends Activity implements OnDataDeliveredListener {
 				@Override
 				public void onComplete(Profile profile) {
 					Bundle bundle = new Bundle();
-					bundle.putString("username", profile.getName());
+					bundle.putString("username", profile.getFirstName() + profile.getLastName());
 					bundle.putString("email", profile.getEmail());
 					bundle.putString("gender", profile.getGender());
 					
