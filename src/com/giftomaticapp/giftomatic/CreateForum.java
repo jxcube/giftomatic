@@ -5,7 +5,6 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -84,14 +83,11 @@ public class CreateForum extends Activity {
 					public void onResponse(JSONObject res) {
 						try {
 							String message = res.getString("message");
-							if (message.equals("user not found")) {
-								Toast.makeText(CreateForum.this, message, Toast.LENGTH_SHORT).show();
+							if (message.equals("error")) {
+								Toast.makeText(CreateForum.this, res.getString("detail"), Toast.LENGTH_SHORT).show();
 								return;
 							} else {
 								Toast.makeText(CreateForum.this, "You have successfully created a new thread!", Toast.LENGTH_SHORT).show();
-								
-								// Go to another activity, what?
-								startActivity(new Intent(CreateForum.this, MainActivity.class));
 								finish();
 							}
 						} catch (JSONException e) {}

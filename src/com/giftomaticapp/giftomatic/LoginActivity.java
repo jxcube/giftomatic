@@ -1,8 +1,5 @@
 package com.giftomaticapp.giftomatic;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,16 +10,8 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
