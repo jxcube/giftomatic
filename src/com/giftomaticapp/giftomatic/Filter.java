@@ -7,15 +7,26 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ActionBar;
+import android.app.ActionBar.TabListener;
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.app.ActionBar.Tab;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.android.volley.Response;
@@ -24,15 +35,107 @@ import com.android.volley.toolbox.JsonArrayRequest;
 
 public class Filter extends Activity {
 
-	GridView gridView;
+	final ActionBar bar = getActionBar();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_filter);
+		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		TabListener ageTabs = new TabListener() {
 
+			@Override
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				Fragment AgeFragment = new AgeFragment();
+				ft.replace(R.id.containerFilter, AgeFragment, "Age Fragment");
+				ft.addToBackStack("Age Fragment");
+				ft.commit();
+
+			}
+
+			@Override
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		TabListener BudgetTabs = new TabListener() {
+
+			@Override
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				Fragment BudgetFragment = new BudgetFragment();
+				ft.replace(R.id.containerFilter, BudgetFragment, "Budget Fragment");
+				ft.addToBackStack("Budget Fragment");
+				ft.commit();
+
+			}
+
+			@Override
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		TabListener TagsTabs = new TabListener() {
+
+			@Override
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				Fragment TagsFragment = new TagsFragment();
+				ft.replace(R.id.containerFilter, TagsFragment, "Tags Fragment");
+				ft.addToBackStack("Tags Fragment");
+				ft.commit();
+
+			}
+
+			@Override
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		bar.addTab(bar.newTab().setText("Age Filter").setTabListener(ageTabs));
+		bar.addTab(bar.newTab().setText("Tags Filter").setTabListener(TagsTabs));
+		bar.addTab(bar.newTab().setText("Budget Filter")
+				.setTabListener(BudgetTabs));
 		// request items
-		getItemDataFiltered("apalh");
+	}
+	public static class AgeFragment extends Fragment {
+		public AgeFragment() {
+		}
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			return inflater.inflate(R.layout.age_filter_fragment, container,false);
+		}
+		@Override
+		public void onAttach(Activity activity) {
+			// TODO Auto-generated method stub
+			super.onAttach(activity);
+		}
+
+		
+		
 	}
 
 	@Override
@@ -96,4 +199,5 @@ public class Filter extends Activity {
 				});
 		NetworkSingleton.getInstance(this).addToRequestQueue(request);
 	}
+
 }
