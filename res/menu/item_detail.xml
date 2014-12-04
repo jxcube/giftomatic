@@ -2,10 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.giftomaticapp.giftomatic.ItemDetail" >
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+    <item android:id="@+id/share_gift"
+          android:icon="@drawable/facebok"
+          android:title="Share to Facebook"
+          android:showAsAction="ifRoom" />
 
 </menu>

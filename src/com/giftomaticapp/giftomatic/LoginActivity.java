@@ -43,7 +43,8 @@ public class LoginActivity extends Activity implements OnDataDeliveredListener {
 
 	Permission[] permissions = new Permission[] {
 			Permission.USER_ABOUT_ME,
-			Permission.EMAIL
+			Permission.EMAIL,
+			Permission.PUBLISH_ACTION
 	};
 
 	SimpleFacebookConfiguration conf = null;
