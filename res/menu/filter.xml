@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-=======
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.giftomaticapp.giftomatic.FilterActivity" >
->>>>>>> origin/filter-main-page
 
     <item
         android:id="@+id/action_settings"
