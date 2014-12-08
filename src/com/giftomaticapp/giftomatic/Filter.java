@@ -122,24 +122,6 @@ public class Filter extends Activity {
 		// request items
 	}
 
-	public static class AgeFragment extends Fragment {
-		public AgeFragment() {
-		}
-
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			// TODO Auto-generated method stub
-			return inflater.inflate(R.layout.age_filter_fragment, container,
-					false);
-		}
-
-		@Override
-		public void onAttach(Activity activity) {
-			// TODO Auto-generated method stub
-			super.onAttach(activity);
-		}
-
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -176,31 +158,4 @@ public class Filter extends Activity {
 //			}
 //		});
 	}
-
-	public void getItemDataFiltered(String s) {
-		String url = "http://api.giftomaticapp.com/item" + s;
-		JsonArrayRequest request = new JsonArrayRequest(url,
-				new Response.Listener<JSONArray>() {
-					@Override
-					public void onResponse(JSONArray response) {
-						try {
-							List<Item> items = new ArrayList<Item>();
-							for (int i = 0; i < response.length(); i++) {
-								JSONObject item = response.getJSONObject(i);
-								items.add(new Item(item));
-							}
-//							requestItems(items);
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
-					}
-				}, new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError err) {
-
-					}
-				});
-		NetworkSingleton.getInstance(this).addToRequestQueue(request);
-	}
-
 }

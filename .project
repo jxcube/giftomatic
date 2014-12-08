@@ -3,6 +3,7 @@
 	<name>giftomatic</name>
 	<comment></comment>
 	<projects>
+		<project>Simple Facebook</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

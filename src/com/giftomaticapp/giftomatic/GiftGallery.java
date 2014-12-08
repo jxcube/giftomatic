@@ -32,6 +32,11 @@ public class GiftGallery extends Activity {
 		setContentView(R.layout.activity_gift_gallery);
 
 		// request items
+		Intent intent = getIntent();
+		String fromIntent = intent.getStringExtra("tags");
+		if (!fromIntent.equals("")) {
+			getItemData(fromIntent);
+		}
 		getItemData();
 	}
 
