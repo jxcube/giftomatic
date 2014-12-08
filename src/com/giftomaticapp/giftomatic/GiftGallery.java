@@ -39,7 +39,7 @@ public class GiftGallery extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.gift_gallery, menu);
-	
+
 		return true;
 	}
 
@@ -48,13 +48,13 @@ public class GiftGallery extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-//		int id = item.getItemId();
-//		if (id == R.id.action_settings) {
-//			return true;
-//		}
+		// int id = item.getItemId();
+		// if (id == R.id.action_settings) {
+		// return true;
+		// }
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void requestItems(final List<Item> items) {
 		// TODO
 		CustomGrid adapter = new CustomGrid(this, items);
@@ -62,36 +62,65 @@ public class GiftGallery extends Activity {
 		gridView.setAdapter(adapter);
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent,
-					View v, int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
 				Intent intent = new Intent(GiftGallery.this, ItemDetail.class);
 				intent.putExtra("itemId", items.get(position).id);
 				startActivity(intent);
 			}
 		});
 	}
+
+	public void getItemData(String specified) {
+		String url = "http://api.giftomaticapp.com/item";
+		url += specified;
+		JsonArrayRequest request = new JsonArrayRequest(url,
+				new Response.Listener<JSONArray>() {
+					@Override
+					public void onResponse(JSONArray response) {
+						try {
+							List<Item> items = new ArrayList<Item>();
+							for (int i = 0; i < response.length(); i++) {
+								JSONObject item = response.getJSONObject(i);
+								items.add(new Item(item));
+							}
+							requestItems(items);
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+				}, new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError err) {
+
+					}
+				});
+		NetworkSingleton.getInstance(this).addToRequestQueue(request);
+	}
+
 	public void getItemData() {
 		String url = "http://api.giftomaticapp.com/item";
-		JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
-			@Override
-			public void onResponse(JSONArray response) {
-				try {
-					List<Item> items = new ArrayList<Item>();
-					for (int i = 0; i < response.length(); i++) {
-						JSONObject item = response.getJSONObject(i);
-						items.add(new Item(item));						
+		JsonArrayRequest request = new JsonArrayRequest(url,
+				new Response.Listener<JSONArray>() {
+					@Override
+					public void onResponse(JSONArray response) {
+						try {
+							List<Item> items = new ArrayList<Item>();
+							for (int i = 0; i < response.length(); i++) {
+								JSONObject item = response.getJSONObject(i);
+								items.add(new Item(item));
+							}
+							requestItems(items);
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
 					}
-					requestItems(items);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			}
-		}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError err) {
+				}, new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError err) {
 
-			}
-		});
+					}
+				});
 		NetworkSingleton.getInstance(this).addToRequestQueue(request);
 	}
 }

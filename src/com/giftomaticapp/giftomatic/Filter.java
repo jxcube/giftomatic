@@ -78,7 +78,8 @@ public class Filter extends Activity {
 			public void onTabSelected(Tab tab, FragmentTransaction ft) {
 				// TODO Auto-generated method stub
 				Fragment BudgetFragment = new BudgetFragment();
-				ft.replace(R.id.containerFilter, BudgetFragment, "Budget Fragment");
+				ft.replace(R.id.containerFilter, BudgetFragment,
+						"Budget Fragment");
 				ft.addToBackStack("Budget Fragment");
 				ft.commit();
 
@@ -120,22 +121,24 @@ public class Filter extends Activity {
 				.setTabListener(BudgetTabs));
 		// request items
 	}
+
 	public static class AgeFragment extends Fragment {
 		public AgeFragment() {
 		}
+
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
-			return inflater.inflate(R.layout.age_filter_fragment, container,false);
+			return inflater.inflate(R.layout.age_filter_fragment, container,
+					false);
 		}
+
 		@Override
 		public void onAttach(Activity activity) {
 			// TODO Auto-generated method stub
 			super.onAttach(activity);
 		}
 
-		
-		
 	}
 
 	@Override
@@ -160,18 +163,18 @@ public class Filter extends Activity {
 
 	public void requestItems(final List<String> tags) {
 		// TODO
-		CustomTags adapter = new CustomTags(this, tags);
-		gridView = (GridView) findViewById(R.id.tags);
-		gridView.setAdapter(adapter);
-		gridView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View v,
-					int position, long id) {
-				Intent intent = new Intent(Filter.this, ItemDetail.class);
-				intent.putExtra("itemId", items.get(position).id);
-				startActivity(intent);
-			}
-		});
+//		CustomTags adapter = new CustomTags(this, tags);
+//		gridView = (GridView) findViewById(R.id.tags);
+//		gridView.setAdapter(adapter);
+//		gridView.setOnItemClickListener(new OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> parent, View v,
+//					int position, long id) {
+//				Intent intent = new Intent(Filter.this, ItemDetail.class);
+//				intent.putExtra("itemId", items.get(position).id);
+//				startActivity(intent);
+//			}
+//		});
 	}
 
 	public void getItemDataFiltered(String s) {
@@ -186,7 +189,7 @@ public class Filter extends Activity {
 								JSONObject item = response.getJSONObject(i);
 								items.add(new Item(item));
 							}
-							requestItems(items);
+//							requestItems(items);
 						} catch (JSONException e) {
 							e.printStackTrace();
 						}

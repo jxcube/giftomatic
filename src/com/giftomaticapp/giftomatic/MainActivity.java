@@ -32,14 +32,16 @@ public class MainActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-//		if (id == R.id.action_settings) {
-//			return true;
-//		}
+		// if (id == R.id.action_settings) {
+		// return true;
+		// }
 		if (id == R.id.action_logout) {
-//			SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
-//			sphelper.setAuthenticated(false);
-//			sphelper.savePrefs();
-			SharedPreferences sp = getSharedPreferences("com.giftomaticapp.giftomatic.LOGIN_DATA", Context.MODE_PRIVATE);
+			// SharedPrefsHelper sphelper = SharedPrefsHelper.getHelper(this);
+			// sphelper.setAuthenticated(false);
+			// sphelper.savePrefs();
+			SharedPreferences sp = getSharedPreferences(
+					"com.giftomaticapp.giftomatic.LOGIN_DATA",
+					Context.MODE_PRIVATE);
 			sp.edit().clear().commit();
 			startActivity(new Intent(this, LoginActivity.class));
 			finish();
@@ -48,19 +50,24 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@OnClick(R.id.all_item)
 	public void goToAllItem() {
 		startActivity(new Intent(this, GiftGallery.class));
 	}
-	
+
 	@OnClick(R.id.random_item)
 	public void displayRandomItem() {
 		startActivity(new Intent(this, RandomPage.class));
 	}
-	
+
 	@OnClick(R.id.forum_btn)
 	public void goToForum() {
 		startActivity(new Intent(this, BrowseForumActivity.class));
+	}
+
+	@OnClick(R.id.filter_item)
+	public void goToFilter() {
+		startActivity(new Intent(this, Filter.class));
 	}
 }
