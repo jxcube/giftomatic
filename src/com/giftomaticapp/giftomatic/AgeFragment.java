@@ -1,5 +1,8 @@
 package com.giftomaticapp.giftomatic;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import android.app.Fragment;
@@ -9,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -23,21 +27,24 @@ public class AgeFragment extends Fragment {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		String[] age ={"Baby","Kids","Teens","Adult","Old"};
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), getId(), age);
+		ArrayList<String> ageLister = new ArrayList<String>();
+		ageLister.addAll(Arrays.asList(age));
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.tags_view, ageLister);
 		ageList.setAdapter(adapter);
 		View view = inflater.inflate(R.layout.age_filter_fragment, container,
 				false);
 		ButterKnife.inject(this, view);
-		ageList.setOnClickListener(new OnClickListener(AdapterView<?> parent,
-				View v, int position) {
-			
+		ageList.setOnItemClickListener(new OnItemClickListener() {
+
 			@Override
-			public void onClick(View v) {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(AgeFragment.this, GiftGallery.class);
-				intent.putExtra("List", items.get(position));
+				Intent intent = new Intent(getActivity(), ItemDetail.class);
+				intent.putExtra("itemId", items.get(position));
 				startActivity(intent);
 			}
+	
 		});
 		return view;
 	}
