@@ -26,10 +26,11 @@ public class AgeFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		String[] age ={"Baby","Kids","Teens","Adult","Old"};
-		ArrayList<String> ageLister = new ArrayList<String>();
-		ageLister.addAll(Arrays.asList(age));
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.tags_view, ageLister);
+		String[] age = { "Baby", "Kids", "Teens", "Adult", "Old" };
+		final ArrayList<String> ageLister = (ArrayList<String>) Arrays
+				.asList(age);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				R.layout.tags_view, ageLister);
 		ageList.setAdapter(adapter);
 		View view = inflater.inflate(R.layout.age_filter_fragment, container,
 				false);
@@ -40,11 +41,11 @@ public class AgeFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getActivity(), ItemDetail.class);
-				intent.putExtra("itemId", items.get(position));
+				Intent intent = new Intent(getActivity(), GiftGallery.class);
+				intent.putExtra("tags", ageLister.get(position));
 				startActivity(intent);
 			}
-	
+
 		});
 		return view;
 	}
