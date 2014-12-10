@@ -1,6 +1,9 @@
 package com.giftomaticapp.giftomatic;
 
 import android.app.Activity;
+import com.github.amlcurran.showcaseview.*;
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +20,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.inject(this);
+		new ShowcaseView.Builder(this)
+	    .setTarget(new ActionViewTarget(this, ActionViewTarget.Type.HOME))
+	    .setContentTitle("ShowcaseView")
+	    .setContentText("This is highlighting the Home button")
+	    .hideOnTouchOutside()
+	    .build();
 	}
 
 	@Override
