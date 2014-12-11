@@ -33,8 +33,9 @@ public class GiftGallery extends Activity {
 
 		// request items
 		Intent intent = getIntent();
-		String fromIntent = intent.getStringExtra("tags");
-		if (!fromIntent.equals("")) {
+
+		if (intent.hasExtra("tags")) {
+			String fromIntent = intent.getStringExtra("tags");
 			getItemData(fromIntent);
 		}
 		getItemData();
@@ -77,7 +78,7 @@ public class GiftGallery extends Activity {
 	}
 
 	public void getItemData(String specified) {
-		String url = "http://api.giftomaticapp.com/item";
+		String url = "http://api.giftomaticapp.com/item?tag=";
 		url += specified;
 		JsonArrayRequest request = new JsonArrayRequest(url,
 				new Response.Listener<JSONArray>() {

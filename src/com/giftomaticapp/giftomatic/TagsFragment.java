@@ -2,10 +2,19 @@ package com.giftomaticapp.giftomatic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -47,7 +56,27 @@ public class TagsFragment extends Fragment {
 	}
 
 	private String[] getTags() {
-		// TODO Auto-generated method stub
+		String url = "http://api.giftomaticapp.com/item";
+		JsonArrayRequest request = new JsonArrayRequest(url,
+				new Response.Listener<JSONArray>() {
+					@Override
+					public void onResponse(JSONArray response) {
+						try {
+							List<Item> items = new ArrayList<Item>();
+							for (int i = 0; i < response.length(); i++) {
+								JSONObject item = response.getJSONObject(i);
+								items.add(new Item(item));
+							}
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+				}, new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError err) {
+
+					}
+				});
 		return null;
 	}
 }
