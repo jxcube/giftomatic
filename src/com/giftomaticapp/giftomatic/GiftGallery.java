@@ -78,7 +78,12 @@ public class GiftGallery extends Activity {
 	}
 
 	public void getItemData(String specified) {
-		String url = "http://api.giftomaticapp.com/item?tag=";
+		String url;
+		if (specified.contains("\\d")) {
+			url = "http://api.giftomaticapp.com/item?tag=";
+		} else {
+			url = "http://api.giftomaticapp.com/item?budget=";
+		}
 		url += specified;
 		JsonArrayRequest request = new JsonArrayRequest(url,
 				new Response.Listener<JSONArray>() {

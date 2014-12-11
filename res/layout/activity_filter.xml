@@ -3,5 +3,5 @@
     android:id="@+id/containerFilter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.giftomaticapp.giftomatic.LoginActivity"
+    tools:context="com.giftomaticapp.giftomatic.Filter"
     tools:ignore="MergeRootFrame" />

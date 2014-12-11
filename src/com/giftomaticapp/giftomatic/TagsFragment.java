@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.orm.dsl.Collection;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -28,45 +29,58 @@ import android.widget.ListView;
 public class TagsFragment extends Fragment {
 	@InjectView(R.id.ageList)
 	ListView ageList;
+	List<String> tags;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		final ArrayList<String> ageLister = (ArrayList<String>) Arrays
-				.asList(getTags());
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				R.layout.tags_view, ageLister);
-		ageList.setAdapter(adapter);
 		View view = inflater.inflate(R.layout.age_filter_fragment, container,
 				false);
+
 		ButterKnife.inject(this, view);
+		tags = new ArrayList<String>();
+		getTags();
+
+		System.out.println("apalah2");
+		return view;
+	}
+
+	public void printTags() {
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				R.layout.tags_view, tags);
+
+		ageList.setAdapter(adapter);
+		System.out.println("apalah");
+
 		ageList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				System.out.println("apalah1");
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getActivity(), GiftGallery.class);
-				intent.putExtra("tags", ageLister.get(position));
+				intent.putExtra("tags", tags.get(position));
 				startActivity(intent);
 			}
 
 		});
-		return view;
 	}
 
-	private String[] getTags() {
-		String url = "http://api.giftomaticapp.com/item";
+	private void getTags() {
+		String url = "http://api.giftomaticapp.com/tags";
 		JsonArrayRequest request = new JsonArrayRequest(url,
 				new Response.Listener<JSONArray>() {
 					@Override
 					public void onResponse(JSONArray response) {
 						try {
-							List<Item> items = new ArrayList<Item>();
+							List<String> items = new ArrayList<String>();
 							for (int i = 0; i < response.length(); i++) {
-								JSONObject item = response.getJSONObject(i);
-								items.add(new Item(item));
+								String tag = response.getString(i);
+								items.add(tag);
 							}
+							tags = items;
+							printTags();
 						} catch (JSONException e) {
 							e.printStackTrace();
 						}
@@ -77,6 +91,6 @@ public class TagsFragment extends Fragment {
 
 					}
 				});
-		return null;
+
 	}
 }

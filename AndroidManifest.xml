@@ -74,6 +74,10 @@
             android:name="com.giftomaticapp.giftomatic.Filter"
             android:label="@string/title_activity_filter" >
         </activity>
+        <activity
+            android:name="com.giftomaticapp.giftomatic.Filterapalah"
+            android:label="@string/title_activity_filterapalah" >
+        </activity>
     </application>
 
     <meta-data
