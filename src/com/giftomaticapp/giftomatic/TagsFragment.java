@@ -14,7 +14,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;

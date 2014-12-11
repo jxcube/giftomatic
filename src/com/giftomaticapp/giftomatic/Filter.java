@@ -3,41 +3,26 @@ package com.giftomaticapp.giftomatic;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
+import android.widget.FrameLayout;
 
-
-public class Filter extends FragmentActivity implements TabListener {
+public class Filter extends Activity implements TabListener {
 
 	final ActionBar bar = getActionBar();
-	ViewPager tabSelector;
+	FrameLayout tabSelector;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_filter);
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		tabSelector = (ViewPager) findViewById(R.id.containerFilter);
-		tabAdaptor tabAdaptor = new tabAdaptor(getSupportFragmentManager());
-		tabSelector.setAdapter(tabAdaptor);
-		tabSelector
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						// When swiping between different app sections, select
-						// the corresponding tab.
-						// We can also use ActionBar.Tab#select() to do this if
-						// we have a reference to the
-						// Tab.
-						bar.setSelectedNavigationItem(position);
-					}
-				});
-
+		tabSelector = (FrameLayout) findViewById(R.id.containerFilter);
 		bar.addTab(bar.newTab().setText("Age").setTabListener(this));
 		bar.addTab(bar.newTab().setText("Tags").setTabListener(this));
 		bar.addTab(bar.newTab().setText("Budget").setTabListener(this));
+		bar.setSelectedNavigationItem(1);
 		// request items
 	}
 
@@ -49,13 +34,19 @@ public class Filter extends FragmentActivity implements TabListener {
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-		tabSelector.setCurrentItem(tab.getPosition());
+		if (tab.getText().equals("Age")) {
+			ft.replace(R.id.containerFilter, new AgeFragment());
+		} else if (tab.getText().equals("Tags")) {
+			ft.replace(R.id.containerFilter, new TagsFragment());
+		} else if (tab.getText().equals("Budget")) {
+			ft.replace(R.id.containerFilter, new BudgetFragment());
+		}
 
 	}
 
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-
+		
 	}
 }

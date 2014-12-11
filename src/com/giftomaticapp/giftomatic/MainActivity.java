@@ -68,6 +68,7 @@ public class MainActivity extends Activity {
 
 	@OnClick(R.id.filter_item)
 	public void goToFilter() {
+		System.out.println("apalah");
 		startActivity(new Intent(this, Filter.class));
 	}
 }
