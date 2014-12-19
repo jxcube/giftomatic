@@ -1,4 +1,4 @@
-package com.giftomaticapp.giftomatic;
+package com.giftomaticapp.gift_o_matic;
 
 import android.app.Activity;
 

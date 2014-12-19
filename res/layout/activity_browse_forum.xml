@@ -7,6 +7,6 @@
     android:paddingRight="16dp"
     android:paddingTop="8dp"
     android:background="#ffc50e0e"
-    tools:context="com.giftomaticapp.giftomatic.BrowseForumActivity" >
+    tools:context="com.giftomaticapp.gift_o_matic.BrowseForumActivity" >
 
 </ListView>

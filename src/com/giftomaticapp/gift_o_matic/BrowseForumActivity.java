@@ -1,4 +1,4 @@
-package com.giftomaticapp.giftomatic;
+package com.giftomaticapp.gift_o_matic;
 
 import java.util.List;
 

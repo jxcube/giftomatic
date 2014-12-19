@@ -1,4 +1,4 @@
-package com.giftomaticapp.giftomatic.library;
+package com.giftomaticapp.gift_o_matic.library;
 
 import android.content.Context;
 import android.content.SharedPreferences;
