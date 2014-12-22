@@ -37,8 +37,8 @@ public class GiftGallery extends Activity {
 		if (intent.hasExtra("tags")) {
 			String fromIntent = intent.getStringExtra("tags");
 			getItemData(fromIntent);
-		}
-		getItemData();
+		}else{
+		getItemData();}
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class GiftGallery extends Activity {
 
 	public void getItemData(String specified) {
 		String url;
-		if (specified.contains("\\d")) {
+		if (!specified.contains("\\d")) {
 			url = "http://api.giftomaticapp.com/item?tag=";
 		} else {
 			url = "http://api.giftomaticapp.com/item?budget=";

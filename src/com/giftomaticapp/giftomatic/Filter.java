@@ -36,6 +36,8 @@ public class Filter extends Activity {
 					ft.replace(R.id.containerFilter, new TagsFragment());
 				} else if (tab.getText().equals("Budget")) {
 					ft.replace(R.id.containerFilter, new BudgetFragment());
+				} else {
+					ft.replace(R.id.containerFilter,new FavoriteFragment());
 				}
 
 			}
@@ -47,6 +49,7 @@ public class Filter extends Activity {
 			}
 		};
 		bar.addTab(bar.newTab().setText("Age").setTabListener(tabby));
+		bar.addTab(bar.newTab().setText("Favorite").setTabListener(tabby));
 		bar.addTab(bar.newTab().setText("Tags").setTabListener(tabby));
 		bar.addTab(bar.newTab().setText("Budget").setTabListener(tabby));
 		bar.setSelectedNavigationItem(0);
